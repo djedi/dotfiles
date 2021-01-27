@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# personal projects
+alias eb="cd ~/src/p/envelopebudget ; decativate ; workon envelopebudget_env ; charm ."
+alias inz="cd ~/src/p/inzolo ; decativate ; workon inzolo_env ; charm ."
+alias wmv="cd ~/src/p/wheresmyvideo ; workon wheresmyvideo_env ; charm ."
+alias av="cd ~/src/p/autovine ; workon autovine_env"
+alias ofxapi="cd ~/src/p/ofx-api ; workon ofxapi_env"
+alias serve="browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000"
+alias newpost="cd ~/src/p/dustindavis.me/content/blog ; node new-post.js ; cd ../.. ; code . ; gittower . ; open http://localhost:8000 ; /Users/dustin/.nvm/versions/node/v10.16.0/bin/gatsby develop"
+alias blog="cd ~/src/p/dustindavis.me ; code . ; open http://localhost:8000 ; /Users/dustin/.nvm/versions/node/v10.16.0/bin/gatsby develop"
+alias soakers="cd ~/src/p/soakers ; code . ; open http://localhost:8080 ; npm start"
+alias daily="cd ~/src/p/dailyjournal ; ./new ; npm run watch"
+alias morning="cd ~/src/p/morningjournal ; code . ; ./new ; npm run watch"
+
+alias paper="open -a LightPaper"
