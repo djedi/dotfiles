@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+
+# Install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# CLI packages
+for pkg in "" \
+	ack \
+	bitwarden-cli \
+	curl \
+	ffmpeg \
+	grep \
+	imagemagick \
+	lame \
+	m4b-tool \
+	node \
+	pyenv \
+	python3 \
+	rename \
+	speedtest-cli \
+	sqlite \
+	ssh-copy-id \
+	tmux \
+	trash \
+	tree \
+	wget \
+	yarn \
+	youtube-dl \
+	; do
+	brew install ${app}
+done
+
+brew install youtube-dl
+
+# Brew Cask Apps
+for app in "" \
+	adobe-creative-cloud \
+	alfred \
+	amazon-music \
+	amazon-photos \
+	appzapper \
+	atext \
+	audiobook-builder \
+	avibrazil-rdm \
+	bartender \
+	base \
+	bettertouchtool \
+	beyond-compare \
+	bitwarden \
+	brave-browser \
+	burp-suite \
+	calibre \
+	camtasia \
+	coda \
+	dash \
+	discord \
+	divvy \
+	docker \
+	dropbox \
+	evernote \
+	fantastical \
+	fastscripts \
+	firefox \
+	fluid \
+	flycut \
+	front \
+	google-chrome \
+	grammarly \
+	handbrake \
+	hyper \
+	kindle \
+	launchcontrol \
+	makemkv \
+	minecraft \
+	obs \
+	openemu \
+	openra \
+	pgadmin4 \
+	plex \
+	plexamp \
+	postman \
+	qlcolorcode \
+	qlmarkdown \
+	qlstephen \
+	qlvideo \
+	qmoji \
+	quicklook-json \
+	recordit \
+	skitch \
+	skype \
+	slack \
+	spectacle \
+	sublime-text \
+	suspicious-package \
+	teamviewer \
+	telegram \
+	the-unarchiver \
+	tower \
+	tweetbot \
+	visual-studio-code \
+	vlc \
+	webpquicklook \
+	workflowy \
+	zoom \
+	; do
+	brew install --cask ${app}
+done
