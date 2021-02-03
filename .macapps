@@ -9,10 +9,13 @@ for pkg in "" \
 	bitwarden-cli \
 	curl \
 	ffmpeg \
+	git \
+	gnu-sed \
 	grep \
 	imagemagick \
 	lame \
 	m4b-tool \
+	mp4v2 \
 	node \
 	pyenv \
 	python3 \
