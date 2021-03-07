@@ -77,6 +77,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/t
 
 # Secrets should go in this file so they are not on github
 source ~/.secrets
+source ~/.functions
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs

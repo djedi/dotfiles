@@ -15,5 +15,6 @@ Thumbs.db
 .Trashes
 
 # Personal
+.npm
 .secrets
 .vpn
