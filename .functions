@@ -1,7 +1,8 @@
 #!/bin/zsh
 
 function plexify {
-    cd $PLEX_DIR
+    local YOUTUBE_DIR="$PLEX_DIR/YouTube Downloads"
+    cd $YOUTUBE_DIR
     youtube-dl $1
     cd -
 }

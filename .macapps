@@ -30,7 +30,7 @@ for pkg in "" \
 	yarn \
 	youtube-dl \
 	; do
-	brew install ${app}
+	brew install ${pkg}
 done
 
 brew install youtube-dl

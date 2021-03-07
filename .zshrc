@@ -96,6 +96,7 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 autoload bashcompinit
 bashcompinit
 
+alias o="open ."
 alias ll="ls -al"
 alias lsp="sudo lsof -i -n -P | grep LISTEN"
 alias largest="du -a | sort -n -r | head -n 10"
