@@ -8,6 +8,6 @@ function plexify {
 
 function tstoplex {
     local new_name="${1%.m?ts}.mp4"
-    ffmpeg -i "$1" -movflags faststart -acodec copy -vcoded copy -scodec copy "$new_name"
+    ffmpeg -i "$1" -movflags faststart -acodec copy -vcodec copy -scodec copy "$new_name"
     cp "$new_name" "$PLEX_DIR"
 }

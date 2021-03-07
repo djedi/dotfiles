@@ -15,6 +15,12 @@ Thumbs.db
 .Trashes
 
 # Personal
+.cache
+.cups
+.hyper_plugins
 .npm
 .secrets
+.ssh
+.virtualenvs
 .vpn
+.vscode
