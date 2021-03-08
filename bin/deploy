@@ -1,0 +1,83 @@
+#!/bin/zsh
+
+function deploy() {
+    echo "Which environment?\n1. Downlynk (default)\n2. Uplynk"
+    read option
+
+    local environment='dl'
+    if [[ $option == 2 ]]; then
+        environment='upl'
+    fi
+
+    echo "Which box type?\n1. Services (default)\n2. Content"
+    read option
+    local boxtype='services'
+    if [[ $option == 2 ]]; then
+        boxtype='content'
+    fi
+
+    echo "Which zone?\n1. Staging (default)\n2. Canary\n3. Prod\n4. All\n5. Other (specify)"
+    read option
+    local zone='staging'
+    case $option in
+        2) zone='canary';;
+        3) zone='prod';;
+        4) zone='';;
+        5) zone='other';;
+    esac
+    if [[ $zone == 'other' ]]; then
+        echo -n "Enter zone:"
+        read zone
+    fi
+
+    echo "Version to deploy?"
+    read version
+
+    echo "How many concurrent servers?"
+    read concurrency
+
+    echo -n "Autopin? [Y/n] "
+    read option
+    local autopin='true'
+    if [[ $option =~ ^([nN]) ]]; then
+        autopin='false'
+    fi
+
+    echo "---------"
+    echo "Environment: $environment"
+    echo "Box type: $boxtype"
+    echo "Zone: $zone"
+    echo "Version: $version"
+    echo "Concurrency: $concurrency"
+    echo "Autopin: $autopin"
+    echo "---------"
+
+    local cmd="$environment-box upgrade -f $boxtype"
+    if [[ $zone ]]; then 
+        cmd+="@$zone"
+    fi
+    if [[ $version ]]; then
+        cmd+=" -v $version"
+    fi
+    if [[ $concurrency ]]; then
+        cmd+=" -p $concurrency"
+    fi
+    if [[ $autopin == 'true' ]]; then 
+        cmd+=" --autopin"
+    fi
+    echo "Command (copied to the clipboard):"
+    echo $cmd | pbcopy
+    echo $cmd
+
+
+
+    echo "\nAre you ready to run this command? [Y/n]"
+    read option
+    if [[ $option =~ ^([nN]) ]]; then
+        echo 'Bye then.'
+    else
+        eval "$cmd ; osascript -e 'display notification \"Deployment Complete\" with title \"Terminal\"' && say -v Samantha 'Deployment complete.'"
+    fi
+}
+
+deploy

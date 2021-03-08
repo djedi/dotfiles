@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+/*
+pass in an unsplash url and it will add to the wallpaper rotation
+https://unsplash.com/photos/K2s_YE031CA/download?force=true
+*/
+
+const { exec } = require("child_process");
+const fs = require("fs");
+const path = require("path");
+const request = require("request");
+
+const WALLPAPER_DIR = "/Users/dustin/Pictures/Wallpaper";
+
+const url = process.argv[2];
+
+const urlParts = url.split("/");
+const basename = urlParts[urlParts.length - 1];
+const downloadUri = `${url}/download?force=true`;
+const downloadPath = path.join(WALLPAPER_DIR, basename + ".jpg");
+
+request.head(url, () => {
+  request(downloadUri).pipe(fs.createWriteStream(downloadPath));
+});
+
+exec(`open ${WALLPAPER_DIR}`);
+exec("killall Dock");

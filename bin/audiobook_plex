@@ -1,0 +1,24 @@
+# get cover art
+# ffmpeg -i "$1" -an -codec:v copy cover.jpg
+
+# add the cover art back on
+# mp4art -q --add cover.jpg output.m4b
+
+# move file
+# rm cover.jpg
+title=$(ffprobe -i "$1" -show_entries format_tags=title -v quiet -of csv="p=0")
+echo $title
+artist=$(ffprobe -i "$1" -show_entries format_tags=artist -v quiet -of csv="p=0")
+echo $artist
+newname="$title by $artist.m4b"
+# newname="${$newname//\"/}"
+echo $newname
+
+read -r -p "Move to Plex? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    mv "$1" "/Users/dustin/Desktop/AB/To Plex/$newname"
+else
+    echo "(cancelled)"
+fi
+

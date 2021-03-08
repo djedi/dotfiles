@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+function miditomp3() {
+    local FILENAME=$1
+    echo $FILENAME
+    local NEW_FILENAME="${FILENAME%.mid}.mp3"
+    echo "Enter new filename [$NEW_FILENAME]:"
+    read input
+    if [[ $input != '' ]]; then
+        NEW_FILENAME=$input
+    fi
+    if [[ $NEW_FILENAME =~ \.mp3$ ]]; then
+    else
+        NEW_FILENAME="$NEW_FILENAME.mp3"
+    fi
+    echo "New file will be named: $NEW_FILENAME"
+    echo "Delete \"$FILENAME\" when done [Y/n]?"
+    read input
+    local DELETE=1
+    if [[ input =~ ^[Nn].* ]]; then
+        DELETE=0
+    fi
+    timidity "$FILENAME" -Ow -o - | ffmpeg -i - "$NEW_FILENAME"
+    /usr/local/bin/trash $FILENAME
+    echo "\"$FILENAME\" moved to trash."
+}
+
+miditomp3 $1

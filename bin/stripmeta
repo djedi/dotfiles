@@ -1,0 +1,5 @@
+#!/bin/zsh
+set -x
+ffmpeg -i $1 -metadata title= -metadata author= -metadata album_artist= -metadata album= -metadata copyright= -metadata description= -c copy new-$1
+mv $1 old-$1
+mv new-$1 $1

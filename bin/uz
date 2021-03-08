@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+# unzip a .zip file to a directory of the same name and trash the zip file
+function unzipandtrash() {
+    local dir=$(echo $1 | rev | cut -f 2- -d '.' | rev)
+    mkdir "$dir"
+    unzip "$1" -d "$dir"
+    /usr/local/bin/trash $1
+}
+unzipandtrash $1

@@ -1,0 +1,47 @@
+#!/bin/zsh
+# Instructions: Put this in a directory that will be in your default PATH (/usr/local/bin)
+# Give it executable permissions (chmod +x prologuify)
+# Install dependencies (brew install ffmpeg imagemagic youtube-dl)
+# Run (prologuify https://www.youtube.com/watch?v=QZxBOzwgBQE) 
+
+# Personalization
+DOWNLOAD_DIR="/Users/dustin/Downloads"
+PLEX_DIR="/Volumes/Media/Audiobooks/YouTube Downloads"
+
+# Not sure how to automatically get Artist name, so I'll just ask for it.
+echo -n "Metadata Artist: "
+read ARTIST
+
+# Put everything in my downloads directory
+cd $DOWNLOAD_DIR
+
+# Get variables to use later
+FILENAME=$(youtube-dl -f "mp4" --get-filename $1)
+NEW_FILENAME=$(youtube-dl --get-filename -x -o '%(title)s.mp3' $1)
+TITLE=$(youtube-dl --get-title $1)
+echo $FILENAME
+echo $NEW_FILENAME
+echo $TITLE
+THUMB_URL=$(youtube-dl --get-thumbnail $1)
+
+# Download thumbnail and crop it to a square
+wget $THUMB_URL -O cover.webp
+dwebp cover.webp -o cover.png
+convert -define jpeg:size=256x256 cover.png  -thumbnail 256x256^ -gravity center -extent 256x256  cover.jpg
+
+# Dowload the video in mp4 format
+youtube-dl -f "mp4" $1
+
+# Convert to MP3 (Doing this manually because filenames were not consistent with youtube-dl)
+ffmpeg -i $FILENAME -vn -ar 44100 -ac 2 -b:a 192k -metadata title=$TITLE -metadata album=$TITLE -metadata artist=$ARTIST -metadata album_artist=$ARTIST temp.mp3
+
+# add cover art
+ffmpeg -i temp.mp3 -i cover.jpg -map 0:0 -map 1:0 -c copy -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" $NEW_FILENAME
+
+# Move the final file to NAS for Plex to pick up
+mv $NEW_FILENAME $PLEX_DIR
+
+# housekeeping
+rm temp.mp3
+rm $FILENAME
+rm cover.*

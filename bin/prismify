@@ -1,0 +1,74 @@
+#!/bin/zsh
+# Instructions: Put this in a directory that will be in your default PATH (/usr/local/bin)
+# Give it executable permissions (chmod +x prismify)
+# Install dependencies (brew install ffmpeg imagemagic youtube-dl)
+# Run (prismify https://www.youtube.com/watch\?v\=kfVsfOSbJY0) 
+
+# Personalization
+DOWNLOAD_DIR="/Users/dustin/Downloads/prismify"
+PLEX_DIR="/Volumes/Media/Music/"
+
+# Not sure how to automatically get Artist name, so I'll just ask for it.
+echo -n "Metadata Title: "
+read TILE_INPUT
+
+echo -n "Metadata Artist: "
+read ARTIST
+
+echo -n "Cover URL (Leave blank to auto generate from YouTube): " 
+read COVER_URL
+
+# Put everything in my downloads directory
+rm -rf $DOWNLOAD_DIR
+mkdir -p $DOWNLOAD_DIR
+cd $DOWNLOAD_DIR
+
+# Get variables to use later
+FILENAME=$(youtube-dl -x --audio-format "mp3" --get-filename $1)
+FILENAME="${FILENAME%.*}.mp3"
+if [[ $TILE_INPUT == '' ]] ; then
+    TITLE=$(youtube-dl --get-title $1)
+else
+    TITLE=$TILE_INPUT
+fi
+echo $FILENAME
+echo $TITLE
+
+# Download thumbnail and crop it to a square
+if [[ $COVER_URL == '' ]] ; then
+    THUMB_URL=$(youtube-dl --get-thumbnail $1)
+    wget -O cover $THUMB_URL
+else
+    wget -O cover $COVER_URL
+fi
+convert -define jpeg:size=256x256 cover -thumbnail 256x256^ -gravity center -extent 256x256 cover.jpg
+
+# Dowload the video in mp4 format
+youtube-dl -x --audio-format mp3 $1
+
+# Rename
+NEW_FILENAME="$ARTIST - $TITLE.mp3"
+mv $FILENAME temp.mp3
+
+# Convert to MP3 (Doing this manually because filenames were not consistent with youtube-dl)
+# ffmpeg -i $FILENAME -vn -ar 44100 -ac 2 -b:a 192k -metadata title=$TITLE -metadata album=$TITLE -metadata artist=$ARTIST -metadata album_artist=$ARTIST temp.mp3
+
+# add cover art
+ffmpeg -i temp.mp3 -i cover.jpg -map 0:0 -map 1:0 -c copy -id3v2_version 3 \
+    -metadata:s:v title="Album cover" \
+    -metadata:s:v comment="Cover (front)" \
+    -metadata title=$TITLE \
+    -metadata album=$TITLE \
+    -metadata artist=$ARTIST \
+    -metadata album_artist=$ARTIST \
+    $NEW_FILENAME
+
+# Move the final file to NAS for Plex to pick up
+mkdir -p "$PLEX_DIR$ARTIST"
+mv $NEW_FILENAME "$PLEX_DIR$ARTIST"
+
+# Move back to original directory
+cd -
+
+# housekeeping
+rm -rf $DOWNLOAD_DIR
