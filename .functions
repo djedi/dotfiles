@@ -1,5 +1,90 @@
 #!/bin/zsh
 
+#!/usr/bin/env bash
+
+fixhls() {
+	ffmpeg -i "$1" -movflags faststart -acodec copy -vcodec copy -scodec copy "$2"
+}
+
+trimhls() {
+	ffmpeg -i "$1" -movflags faststart -ss "$2" -acodec copy -vcodec copy -scodec copy "$3"
+}
+
+mp4faststart() {
+	local original=$1
+	mv $original temp.mp4
+	ffmpeg -i temp.mp4 -movflags faststart -acodec copy -vcodec copy -scodec copy $original
+}
+
+tstoplextv() {
+	ffmpeg -i "$1" -c copy -c:s mov_text -metadata:s:s:0 language=eng -metadata:s:s:1 language=ipk "${1%.ts}.mp4"
+	cp "${1%.ts}.mp4" /Volumes/Media/TV
+}
+
+mp3toringtone() {
+	ffmpeg -i "$1" -c:a aac -b:a 192k temp_ringtone.m4a
+	mv temp_ringtone.m4a "${1%.mp3}.m4r"
+}
+
+txttomp3() {
+	say -v Alex -f $1 -o temp.aiff
+	ffmpeg -i temp.aiff "$(basename $1 .txt).mp3"
+	rm temp.aiff
+}
+
+# Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
+function targz() {
+	local tmpFile="${@%/}.tar";
+	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
+
+	size=$(
+		stat -f"%z" "${tmpFile}" 2> /dev/null; # macOS `stat`
+		stat -c"%s" "${tmpFile}" 2> /dev/null;  # GNU `stat`
+	);
+
+	local cmd="";
+	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
+		# the .tar file is smaller than 50 MB and Zopfli is available; use it
+		cmd="zopfli";
+	else
+		if hash pigz 2> /dev/null; then
+			cmd="pigz";
+		else
+			cmd="gzip";
+		fi;
+	fi;
+
+	echo "Compressing .tar ($((size / 1000)) kB) using \`${cmd}\`…";
+	"${cmd}" -v "${tmpFile}" || return 1;
+	[ -f "${tmpFile}" ] && rm "${tmpFile}";
+
+	zippedSize=$(
+		stat -f"%z" "${tmpFile}.gz" 2> /dev/null; # macOS `stat`
+		stat -c"%s" "${tmpFile}.gz" 2> /dev/null; # GNU `stat`
+	);
+
+	echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
+}
+
+# `o` with no arguments opens the current directory, otherwise opens the given
+# location
+function o() {
+	if [ $# -eq 0 ]; then
+		open .;
+	else
+		open "$@";
+	fi;
+}
+
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+function tre() {
+	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}
+
+
 function plexify {
     local YOUTUBE_DIR="$PLEX_DIR/YouTube Downloads"
     cd $YOUTUBE_DIR
