@@ -53,6 +53,7 @@ Thumbs.db
 .npm
 .nuuid.ini
 .nvm
+.oh-my-zsh
 .pgadmin
 .pip
 .poetry
@@ -63,6 +64,7 @@ Thumbs.db
 .secrets
 .ssh
 .SynologyDrive
+.Trash
 .uplynk
 .vagrant.d
 .vim
@@ -98,4 +100,3 @@ Pictures
 Public
 Sites
 src
-.oh-my-zsh
