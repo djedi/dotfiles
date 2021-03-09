@@ -75,6 +75,7 @@ for app in "" \
 	launchcontrol \
 	makemkv \
 	minecraft \
+	ngrok \
 	obs \
 	openemu \
 	openra \
