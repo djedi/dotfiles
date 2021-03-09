@@ -50,7 +50,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx autopep8 bower brew colored-man django fabric github npm pip python tmux poetry)
+plugins=(git osx autopep8 bower brew colored-man-pages django fabric github npm pip python tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -59,7 +59,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/usr/local/share/npm/bin:/Users/dustin/bin:/Users/dustin/.poetry/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
+# You may need to manually set your language environment 
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions

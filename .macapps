@@ -17,6 +17,7 @@ for pkg in "" \
 	m4b-tool \
 	mp4v2 \
 	node \
+	poetry \
 	pyenv \
 	python3 \
 	rename \
