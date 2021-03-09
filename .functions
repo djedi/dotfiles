@@ -1,6 +1,4 @@
-#!/bin/zsh
-
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 fixhls() {
 	ffmpeg -i "$1" -movflags faststart -acodec copy -vcodec copy -scodec copy "$2"
