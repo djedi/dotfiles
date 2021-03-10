@@ -110,3 +110,5 @@ for app in "" \
 	; do
 	brew install --cask ${app}
 done
+
+npm install --global browser-sync

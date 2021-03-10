@@ -1,0 +1,8 @@
+SHELL=/bin/sh
+USER=dustin
+PATH=/usr/bin:/bin
+PWD=/Users/dustin
+SHLVL=1
+HOME=/Users/dustin
+LOGNAME=dustin
+_=/usr/bin/env

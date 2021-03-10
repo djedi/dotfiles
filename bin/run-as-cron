@@ -1,0 +1,4 @@
+#!/bin/sh
+
+. "/Users/dustin/bin/.cron-env"
+exec /usr/bin/env -i "$SHELL" -c ". /Users/dustin/bin/.cron-env; $1"
