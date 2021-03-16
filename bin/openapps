@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Open standard apps
+open -a "Brave Browser"
+open -a "Slack"
+open -a "Hyper"
