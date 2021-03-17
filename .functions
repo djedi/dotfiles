@@ -74,6 +74,12 @@ function o() {
 	fi;
 }
 
+# `oa <app nam>` opens an app from cli
+function oa() {
+	echo "Opening \"$@\""
+	open -a "$@"
+}
+
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
@@ -109,7 +115,7 @@ function restart-bluetooth {
 
 # Quit an application
 function quit {
-	local SCRIPT="quit app \"$1\""
-	echo "Quiting app \"$1\""
+	local SCRIPT="quit app \"$@\""
+	echo "Quiting app \"$@\""
 	osascript -e $SCRIPT
 }
