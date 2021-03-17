@@ -106,3 +106,10 @@ function restart-bluetooth {
 	sudo launchctl stop com.apple.blued
 	sudo launchctl start com.apple.blued
 }
+
+# Quit an application
+function quit {
+	local SCRIPT="quit app \"$1\""
+	echo "Quiting app \"$1\""
+	osascript -e $SCRIPT
+}
