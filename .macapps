@@ -21,6 +21,7 @@ for pkg in "" \
 	pyenv \
 	python3 \
 	rename \
+	rsync \
 	speedtest-cli \
 	sqlite \
 	ssh-copy-id \

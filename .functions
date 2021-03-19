@@ -76,8 +76,8 @@ function o() {
 
 # `oa <app nam>` opens an app from cli
 function oa() {
-	echo "Opening \"$@\""
-	open -a "$@"
+	echo "Opening \"$*\""
+	open -a "$*"
 }
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
@@ -118,4 +118,11 @@ function quit {
 	local SCRIPT="quit app \"$@\""
 	echo "Quiting app \"$@\""
 	osascript -e $SCRIPT
+}
+
+# Close and re-open an app
+function reopen() {
+	quit "$*"
+	sleep 1
+	oa "$*"
 }
