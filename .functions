@@ -126,3 +126,8 @@ function reopen() {
 	sleep 1
 	oa "$*"
 }
+
+# rsync backup with progress (must have rsync v3 or higher)
+function backup() {
+	rsync -a --info=progress2 $@
+}
