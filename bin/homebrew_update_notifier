@@ -9,7 +9,7 @@
 TERM_APP='/Applications/Hyper.app'
 BREW_EXEC='/usr/local/bin/brew'
 TERMINAL_NOTIFIER='/usr/local/bin/terminal-notifier'
-NOTIF_ARGS="-sender co.zeit.hyper"
+NOTIF_ARGS="-activate co.zeit.hyper"
 
 $BREW_EXEC update 2>&1 > /dev/null
 outdated=`$BREW_EXEC outdated --quiet | sed -e 's/.*\///'`
@@ -21,9 +21,10 @@ outdated=`comm -1 -3 <(echo "$pinned") <(echo "$outdated")`
 if [ -z "$outdated" ] ; then
     if [ -e $TERMINAL_NOTIFIER ]; then
         # No updates available
-        $TERMINAL_NOTIFIER $NOTIF_ARGS \
-            -title "No Homebrew Updates Available" \
-            -message "No updates available yet for any homebrew packages."
+		echo 'No updates'
+        # $TERMINAL_NOTIFIER $NOTIF_ARGS \
+        #     -title "No Homebrew Updates Available" \
+        #     -message "No updates available yet for any homebrew packages."
     fi
 else
     # We've got an outdated formula or two
@@ -41,8 +42,13 @@ else
         else
             message="The following formulae are outdated: $message"
         fi
+		# echo $message
         # Send to the Nofication Center
+		# echo "$TERMINAL_NOTIFIER $NOTIF_ARGS -title \"Homebrew Updates Available [$lc]\" -message \"$message\""
         $TERMINAL_NOTIFIER $NOTIF_ARGS \
             -title "Homebrew Updates Available [$lc]" -message "$message"
+	else
+		echo 'Need to install terminal-notifier'
+		$BREW_EXEC install terminal-notifier
     fi
 fi

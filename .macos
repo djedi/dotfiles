@@ -29,6 +29,14 @@ sudo nvram SystemAudioVolume=" "
 # Disable transparency in the menu bar and elsewhere on Yosemite
 defaults write com.apple.universalaccess reduceTransparency -bool true
 
+# Set to dark mode
+# defaults write -g AppleInterfaceStyle -string "Dark"
+# Set dark/light to auto
+defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool true
+
+# Set accent color to green
+defaults write NSGlobalDomain AppleAccentColor -int 3
+
 # Set highlight color to green
 defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
