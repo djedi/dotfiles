@@ -29,6 +29,7 @@ Thumbs.db
 .config
 .cups
 .docker
+.dropbox
 .dvdcss
 .electron*
 .gitconfig
@@ -73,6 +74,7 @@ Thumbs.db
 .vpn
 .vscode
 .vue*
+.wget-hsts
 .yarn*
 .zapierrc
 .zcompdump-*
@@ -89,6 +91,7 @@ devtools
 docker
 Documents
 Downloads
+Dropbox
 launcher.db
 lib
 Library
