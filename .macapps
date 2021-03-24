@@ -6,6 +6,8 @@
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+brew tap teamookla/speedtest
+
 # CLI packages
 for pkg in "" \
 	ack \
@@ -21,12 +23,13 @@ for pkg in "" \
 	mp4v2 \
 	node \
 	poetry \
+	process \
 	pyenv \
 	python \
 	python3 \
 	rename \
 	rsync \
-	speedtest-cli \
+	speedtest \
 	sqlite \
 	ssh-copy-id \
 	terminal-notifier \
@@ -94,7 +97,6 @@ for app in "" \
 	qlmarkdown \
 	qlstephen \
 	qlvideo \
-	qmoji \
 	quicklook-json \
 	recordit \
 	skitch \

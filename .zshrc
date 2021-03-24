@@ -59,7 +59,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/usr/local/share/npm/bin:/Users/dustin/bin:/Users/dustin/.poetry/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment 
+# You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -69,15 +69,11 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/t
 #   export EDITOR='mvim'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
 # Secrets should go in this file so they are not on github
 source ~/.secrets
 source ~/.functions
+source ~/.media_functions
+source ~/.aliases
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
@@ -96,33 +92,6 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 autoload bashcompinit
 bashcompinit
 
-alias o="open ."
-alias ll="ls -al"
-alias lsp="sudo lsof -i -n -P | grep LISTEN"
-alias largest="du -a | sort -n -r | head -n 10"
-alias refreshdesktop="killall Dock"
-
-# sqlitebrowser
-alias sqlitebrowser="/Applications/DB\ Browser\ for\ SQLite.app/Contents/MacOS/DB\ Browser\ for\ SQLite"
-
-# shortcuts to show & hide hidden files
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hideFiles='n'
-
-# show/hide desktop icons
-alias showDesktopIcons='defaults write com.apple.finder CreateDesktop true ; killall Finder'
-alias hideDesktopIcons='defaults write com.apple.finder CreateDesktop false ; killall Finder'
-
-# notifications for long running terminal tasks
-# example: git pull -r ndone
-alias -g ndone='; osascript -e "display notification \"Done with task\" with title \"Terminal\"" && say -v Samantha done'
-
-# show ports in use
-alias showports='lsof -i -n -P'
-
-# node package lists
-alias ng="npm list -g --depth=0 2>/dev/null"
-alias nl="npm list --depth=0 2>/dev/null"
 
 # nvm
 export NVM_DIR="/Users/dustin/.nvm"
@@ -130,32 +99,6 @@ export NVM_DIR="/Users/dustin/.nvm"
 
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# Docker
-alias dcomp="docker-compose"
-alias dcu="docker-compose up -d"
-alias dcd="docker-compose down"
-alias dex=dex-fn
-alias di=di-fn
-alias dim="docker images"
-alias dip=dip-fn
-alias dl=dl-fn
-alias dnames=dnames-fn
-alias dps="docker ps"
-alias dpsa="docker ps -a"
-alias drmc="docker rm $(docker ps --all -q -f status=exited)"
-alias drmid="docker rmi $( docker images -q -f dangling=true)"
-alias drun=drun-fn
-alias dsr=dsr-fn
-
-# get ip address of url
-alias getip="dig +short"
-alias myip="curl -4 ifconfig.io"
-
-# run diabetes report
-alias carelink="/Users/dustin/.nvm/versions/node/v8.11.4/bin/node /Users/dustin/src/p/dailygrades/carelink.js"
-alias grades="cd ~/src/p/dailygrades ; node missing.js email ; cd -"
-
 
 
 # Maximum number of history lines in memory
