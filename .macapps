@@ -28,6 +28,7 @@ for pkg in "" \
 	python \
 	python3 \
 	rename \
+	ripgrep \
 	rsync \
 	speedtest \
 	sqlite \
@@ -57,17 +58,18 @@ for app in "" \
 	avibrazil-rdm \
 	bartender \
 	base \
-	bettertouchtool \
+	# bettertouchtool \
 	beyond-compare \
 	bitwarden \
 	brave-browser \
 	burp-suite \
 	calibre \
 	camtasia \
+	cleanmymac \
 	coda \
 	dash \
 	discord \
-	divvy \
+	# divvy \
 	docker \
 	dropbox \
 	evernote \
@@ -75,20 +77,19 @@ for app in "" \
 	fastscripts \
 	firefox \
 	fluid \
-	flycut \
-	front \
+	# flycut \
 	google-chrome \
 	grammarly \
-	handbrake \
+	# handbrake \
 	hyper \
 	kindle \
 	launchcontrol \
-	makemkv \
-	minecraft \
+	# makemkv \
+	# minecraft \
 	ngrok \
 	obs \
-	openemu \
-	openra \
+	# openemu \
+	# openra \
 	pgadmin4 \
 	plex \
 	plexamp \
@@ -113,10 +114,15 @@ for app in "" \
 	visual-studio-code \
 	vlc \
 	webpquicklook \
-	workflowy \
+	# workflowy \
 	zoom \
 	; do
 	brew install --cask ${app}
 done
 
+# Install browser-sync globally for `serve` alias
 npm install --global browser-sync
+
+# Copy Launch Agents
+cp ~/init/*.plist ~/Library/LaunchAgents
+sed -i '' "s/IFTTT_PLACEHOLDER/$IFTTT_MAKER_KEY/" ~/Library/LaunchAgents/local.on-air.plist

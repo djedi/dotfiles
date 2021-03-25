@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>IFTTT_MAKER_KEY</key>
+		<string>IFTTT_PLACEHOLDER</string>
+	</dict>
+	<key>KeepAlive</key>
+	<true/>
+	<key>Label</key>
+	<string>local.on-air</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>sh</string>
+		<string>-c</string>
+		<string>/Users/dustin/src/onair/on-air.sh</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/tmp/local.on-air.err</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/local.on-air.out</string>
+	<key>WorkingDirectory</key>
+	<string>/Users/dustin/src/onair</string>
+</dict>
+</plist>
