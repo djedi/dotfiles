@@ -126,3 +126,11 @@ npm install --global browser-sync
 # Copy Launch Agents
 cp ~/init/*.plist ~/Library/LaunchAgents
 sed -i '' "s/IFTTT_PLACEHOLDER/$IFTTT_MAKER_KEY/" ~/Library/LaunchAgents/local.on-air.plist
+
+# Install alerter - no other option I know of at the moment
+cd ~/Downloads
+wget --no-check-certificate https://github.com/vjeantet/alerter/releases/download/004/alerter_v004_darwin_amd64.zip
+unzip alerter_v004_darwin_amd64.zip
+mv alerter ~/bin
+rm alerter_v004_darwin_amd64.zip
+cd -
