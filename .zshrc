@@ -94,8 +94,8 @@ bashcompinit
 
 
 # nvm
-export NVM_DIR="/Users/dustin/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
@@ -111,6 +111,11 @@ export HISTCONTROL=ignoredups:erasedups
 # Go
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
+
+# Python2
+export PYTHON2PATH="$HOME/Library/Python/2.7/bin"
+export PATH=$PATH:$PYTHON2PATH
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 
 # Fix numeric keypad
 # 0 . Enter
