@@ -45,6 +45,7 @@ Thumbs.db
 .KCR
 .kms
 .kms.lock
+.lesshst
 .local
 .mongossl
 .mono
@@ -75,12 +76,15 @@ Thumbs.db
 .vscode
 .vue*
 .wget-hsts
+.wgetrc
 .yarn*
 .zapierrc
+.zcompdump
 .zcompdump-*
 .zsh_history
 .zsh_sessions
 .zsh-update
+/bin/alerter
 Applications
 cron.error.log
 cron.log
@@ -103,4 +107,3 @@ Pictures
 Public
 Sites
 src
-/bin/alerter
