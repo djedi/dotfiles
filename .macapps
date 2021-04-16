@@ -12,6 +12,7 @@ brew tap homebrew-ffmpeg/ffmpeg
 # CLI packages
 for pkg in "" \
 	ack \
+	awscli \
 	bitwarden-cli \
 	curl \
 	git \
@@ -70,6 +71,7 @@ for app in "" \
 	camtasia \
 	cleanmymac \
 	coda \
+	cyberduck \
 	dash \
 	discord \
 	# divvy \
@@ -109,17 +111,18 @@ for app in "" \
 	skype \
 	slack \
 	spectacle \
+	sponge \
 	sublime-text \
 	suspicious-package \
 	teamviewer \
 	telegram \
 	the-unarchiver \
+	thunderbird \
 	tower \
 	tweetbot \
 	visual-studio-code \
 	vlc \
 	webpquicklook \
-	# workflowy \
 	zoom \
 	; do
 	brew install --cask ${app}

@@ -8,9 +8,17 @@ alias av="cd ~/src/p/autovine ; workon autovine_env"
 alias ofxapi="cd ~/src/p/ofx-api ; workon ofxapi_env"
 alias serve="browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000 --directory"
 alias newpost="cd ~/src/p/dustindavis.me/content/blog ; node new-post.js ; cd ../.. ; code . ; gittower . ; open http://localhost:8000 ; /Users/dustin/.nvm/versions/node/v10.16.0/bin/gatsby develop"
-alias blog="cd ~/src/p/dustindavis.me ; code . ; open http://localhost:8000 ; /Users/dustin/.nvm/versions/node/v10.16.0/bin/gatsby develop"
+alias blog="cd ~/src/p/dustindavis.me ; code . ; open http://localhost:8000 ; gatsby develop"
 alias soakers="cd ~/src/p/soakers ; code . ; open http://localhost:8080 ; npm start"
 alias daily="cd ~/src/p/dailyjournal ; ./new ; npm run watch"
 alias morning="cd ~/src/p/morningjournal ; code . ; ./new ; npm run watch"
 
 alias paper="open -a LightPaper"
+
+# IsaiahExplained.com
+alias syncisaiahexplained="rsync -av --exclude={'*.mp3*','*.swf*','*.zip*','*.ogg*','vendor','app/storage','public/legacy'} isaiahde@isaiahexplained.com:/home1/isaiahde/public_html/isaiahexplained ~/src/p"
+alias cdie="cd ~/src/p/isaiahexplained"
+
+# Personal backups
+alias busettings="rsync -av $HOME/Library/Thunderbird /Volumes/Dustin/settings-backup"
+alias restoresettings="rsync -aAXv /Volumes/Dustin/settings-backup/Thunderbird $HOME/Library"

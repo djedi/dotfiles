@@ -117,6 +117,17 @@ export PYTHON2PATH="$HOME/Library/Python/2.7/bin"
 export PATH=$PATH:$PYTHON2PATH
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 
+# OpenSSL
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+# For compilers to find openssl@1.1 you may need to set:
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+
+# For pkg-config to find openssl@1.1 you may need to set:
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+
 # Fix numeric keypad
 # 0 . Enter
 bindkey -s "^[Op" "0"
@@ -139,3 +150,9 @@ bindkey -s "^[Ol" "+"
 bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/dustin/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dustin/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/dustin/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dustin/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

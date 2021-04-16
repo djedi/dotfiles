@@ -81,3 +81,9 @@ function reopen() {
 function backup() {
 	rsync -a --info=progress2 $@
 }
+
+# Make a new executable file
+function exe() {
+	touch $@
+	chmod +x $@
+}
