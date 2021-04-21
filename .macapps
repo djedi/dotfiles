@@ -14,6 +14,7 @@ for pkg in "" \
 	ack \
 	awscli \
 	bitwarden-cli \
+	bzip2 \
 	curl \
 	git \
 	gnu-sed \
@@ -26,14 +27,17 @@ for pkg in "" \
 	mp4v2 \
 	node \
 	nvm \
+	openssl \
 	poetry \
 	process \
 	pyenv \
 	python \
 	python3 \
+	readline \
 	rename \
 	ripgrep \
 	rsync \
+	rtmpdump \
 	speedtest \
 	sqlite \
 	ssh-copy-id \
@@ -44,6 +48,7 @@ for pkg in "" \
 	wget \
 	yarn \
 	youtube-dl \
+	zlib \
 	; do
 	brew install ${pkg}
 done
@@ -58,6 +63,7 @@ for app in "" \
 	amazon-photos \
 	appzapper \
 	atext \
+	audacity \
 	audiobook-builder \
 	avibrazil-rdm \
 	bartender \
@@ -164,6 +170,7 @@ for app in "" \
 	407963104 \ #  Pixelmator (3.9.2)
 	409203825 \ #  Numbers (11.0)
 	1153157709 \ #  Speedtest (1.20)
+	497799835 \ #  Xcode
 	; do
 	mas install ${app}
 done

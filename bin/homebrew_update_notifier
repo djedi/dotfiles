@@ -57,9 +57,9 @@ else
 		case $ANSWER in
 			"@TIMEOUT") echo "Timeout man, sorry" ;;
 			"@CLOSED") echo "You clicked on the default alert' close button" ;;
-			"@CONTENTCLICKED") echo "You clicked the alert's content !" ;;
+			"@CONTENTCLICKED") echo "> brew upgrade : " && brew upgrade ;;
 			"@ACTIONCLICKED") echo "You clicked the alert default action button" ;;
-			"Yes") echo "Action YES" && brew upgrade ;;
+			"Yes") echo "> brew upgrade : " && brew upgrade ;;
 			**) echo "? --> $ANSWER" ;;
 		esac
 	else
