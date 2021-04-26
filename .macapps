@@ -10,127 +10,14 @@ brew tap teamookla/speedtest
 brew tap homebrew-ffmpeg/ffmpeg
 
 # CLI packages
-for pkg in "" \
-	ack \
-	awscli \
-	bitwarden-cli \
-	bzip2 \
-	curl \
-	git \
-	gnu-sed \
-	grep \
-	homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac \
-	imagemagick \
-	lame \
-	mas \
-	m4b-tool \
-	mp4v2 \
-	node \
-	nvm \
-	openssl \
-	poetry \
-	process \
-	pyenv \
-	python \
-	python3 \
-	readline \
-	rename \
-	ripgrep \
-	rsync \
-	rtmpdump \
-	speedtest \
-	sqlite \
-	ssh-copy-id \
-	terminal-notifier \
-	tmux \
-	trash \
-	tree \
-	wget \
-	yarn \
-	youtube-dl \
-	zlib \
-	; do
+for pkg in $(cat .apps_brew_cli.txt); do
 	brew install ${pkg}
 done
 
-brew install youtube-dl
+brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac
 
 # Brew Cask Apps
-for app in "" \
-	adobe-creative-cloud \
-	alfred \
-	amazon-music \
-	amazon-photos \
-	appzapper \
-	atext \
-	audacity \
-	audiobook-builder \
-	avibrazil-rdm \
-	bartender \
-	base \
-	# bettertouchtool \
-	beyond-compare \
-	bitwarden \
-	brave-browser \
-	burp-suite \
-	calibre \
-	camtasia \
-	cleanmymac \
-	coda \
-	cyberduck \
-	dash \
-	discord \
-	# divvy \
-	docker \
-	dropbox \
-	evernote \
-	fantastical \
-	fastscripts \
-	firefox \
-	fluid \
-	# flycut \
-	google-chrome \
-	grammarly \
-	# handbrake \
-	hazel \
-	homebrew/cask-drivers/fujitsu-scansnap-home \
-	hyper \
-	kindle \
-	launchcontrol \
-	# makemkv \
-	# minecraft \
-	ngrok \
-	obs \
-	# openemu \
-	# openra \
-	pgadmin4 \
-	plex \
-	plexamp \
-	postman \
-	qlcolorcode \
-	qlmarkdown \
-	qlstephen \
-	qlvideo \
-	quicklook-json \
-	recordit \
-	skitch \
-	skype \
-	slack \
-	spectacle \
-	sponge \
-	sublime-text \
-	suspicious-package \
-	teamviewer \
-	telegram \
-	the-unarchiver \
-	thunderbird \
-	tower \
-	tweetbot \
-	visual-studio-code \
-	vlc \
-	webpquicklook \
-	zoom \
-	; do
+for app in $(cat .apps_brew_cask.txt); do
 	brew install --cask ${app}
 done
 
@@ -140,6 +27,9 @@ npm install --global browser-sync
 # Copy Launch Agents
 cp ~/init/*.plist ~/Library/LaunchAgents
 sed -i '' "s/IFTTT_PLACEHOLDER/$IFTTT_MAKER_KEY/" ~/Library/LaunchAgents/local.on-air.plist
+for f in ~/Library/LaunchAgents/*.plist ; do
+	launchctl load ${f}
+done
 
 # Install alerter - no other option I know of at the moment
 cd ~/Downloads
@@ -153,24 +43,6 @@ cd -
 mkdir ~/.nvm
 
 # Install from mac app store
-for app in "" \
-	562184107 \ #  LanScan Pro (5.1.2)
-	422025166 \ #  ScreenFlow (3.0.8)
-	409183694 \ #  Keynote (11.0.1)
-	492729790 \ #  Snagit (3.3.5)
-	852320343 \ #  Sketch (3.4.2)
-	1191449274 \ #  ToothFairy (2.7.2)
-	886882234 \ #  Tag Editor (1.0.10)
-	1437681957 \ #  Audiobook Builder (2.1.2)
-	585829637 \ #  Todoist (7.5)
-	1055511498 \ #  Day One (6.0.3)
-	1237562727 \ #  IPEVO Annotator (4.6.2)
-	409201541 \ #  Pages (11.0)
-	360593530 \ #  Notability (10.3.4)
-	407963104 \ #  Pixelmator (3.9.2)
-	409203825 \ #  Numbers (11.0)
-	1153157709 \ #  Speedtest (1.20)
-	497799835 \ #  Xcode
-	; do
-	mas install ${app}
+for app_id in $(cat .apps_app_store.txt | grep -oE '^[0-9]+') ; do
+	mas install ${app_id}
 done

@@ -87,3 +87,42 @@ function exe() {
 	touch $@
 	chmod +x $@
 }
+
+# Install brew cli formulae
+function install_cli {
+	brew tap teamookla/speedtest
+	brew tap homebrew-ffmpeg/ffmpeg
+
+	# CLI packages
+	for pkg in $(cat ~/.apps_brew_cli.txt); do
+		brew install ${pkg}
+	done
+
+	brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac
+}
+
+# Install GUI apps
+function install_apps {
+	for app in $(cat ~/.apps_brew_cask.txt); do
+		brew install --cask ${app}
+	done
+
+	# Install from mac app store
+	for app_id in $(cat .apps_app_store.txt | grep -oE '^[0-9]+') ; do
+		mas install ${app_id}
+	done
+}
+
+# favorite games
+function install_games {
+	for app in $(cat ~/.apps_brew_games.txt) ; do
+		brew install --cask ${app}
+	done
+}
+function uninstall_games {
+	for app in $(cat ~/.apps_brew_games.txt) ; do
+		echo "uninstalling ${app}"
+		brew uninstall --cask --zap ${app}
+	done
+}
+
