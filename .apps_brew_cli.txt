@@ -8,11 +8,12 @@ gnu-sed
 grep
 imagemagick
 lame
-mas
 m4b-tool
+mas
 mp4v2
 node
 nvm
+ocrmypdf
 openssl
 poetry
 process
