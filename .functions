@@ -88,13 +88,18 @@ function exe() {
 	chmod +x $@
 }
 
+# Brew uninstall with zap
+function zap {
+	brew uninstall --zap $@
+}
+
 # Install brew cli formulae
 function install_cli {
 	brew tap teamookla/speedtest
 	brew tap homebrew-ffmpeg/ffmpeg
 
 	# CLI packages
-	for pkg in $(cat ~/.apps_brew_cli.txt); do
+	for pkg in $(cat ~/.apps_brew_cli.txt | grep -oE '^[^#]+'); do
 		brew install ${pkg}
 	done
 
@@ -103,7 +108,7 @@ function install_cli {
 
 # Install GUI apps
 function install_apps {
-	for app in $(cat ~/.apps_brew_cask.txt); do
+	for app in $(cat ~/.apps_brew_cask.txt | grep -oE '^[^#]+'); do
 		brew install --cask ${app}
 	done
 

@@ -1,12 +1,12 @@
 adobe-creative-cloud
 alfred
 amazon-music
-amazon-photos
-appzapper
-atext
+# amazon-photos
+# appzapper
+# atext
 audacity
 audiobook-builder
-avibrazil-rdm
+# avibrazil-rdm
 bartender
 base
 beyond-compare
@@ -17,8 +17,8 @@ calibre
 camtasia
 cleanmymac
 coda
-cyberduck
-dash
+# cyberduck
+# dash
 discord
 docker
 dropbox
@@ -30,7 +30,7 @@ fluid
 flycut
 google-chrome
 grammarly
-handbrake
+# handbrake
 hazel
 homebrew/cask-drivers/fujitsu-scansnap-home
 hyper
@@ -49,18 +49,17 @@ qlvideo
 quicklook-json
 recordit
 skitch
-skype
+# skype
 slack
 spectacle
-sponge
 sublime-text
 suspicious-package
-teamviewer
+# teamviewer
 telegram
 the-unarchiver
-thunderbird
+# thunderbird
 tower
-tweetbot
+# tweetbot
 visual-studio-code
 vlc
 webpquicklook

@@ -10,14 +10,14 @@ brew tap teamookla/speedtest
 brew tap homebrew-ffmpeg/ffmpeg
 
 # CLI packages
-for pkg in $(cat .apps_brew_cli.txt); do
+for pkg in $(cat .apps_brew_cli.txt | grep -oE '^[^#]+') ; do
 	brew install ${pkg}
 done
 
 brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac
 
 # Brew Cask Apps
-for app in $(cat .apps_brew_cask.txt); do
+for app in $(cat .apps_brew_cask.txt | grep -oE '^[^#]+'); do
 	brew install --cask ${app}
 done
 

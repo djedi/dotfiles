@@ -26,6 +26,7 @@ ripgrep
 rsync
 rtmpdump
 speedtest
+sponge
 sqlite
 ssh-copy-id
 terminal-notifier
