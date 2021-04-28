@@ -22,3 +22,13 @@ alias cdie="cd ~/src/p/isaiahexplained"
 # Personal backups
 alias busettings="rsync -av $HOME/Library/Thunderbird /Volumes/Dustin/settings-backup"
 alias restoresettings="rsync -aAXv /Volumes/Dustin/settings-backup/Thunderbird $HOME/Library"
+
+# setup 
+function clonepersonal {
+    git clone 
+
+    for project in dustindavis.me phurlite dailygrades morningjournal soakers lightningleague dailyjournal chase-amazon ; do
+        rm -rf "~/src/p/$project"
+        git clone "git@github.com:djedi/$project.git" "~/src/p/$project"
+    done
+}

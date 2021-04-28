@@ -42,6 +42,9 @@ cd -
 # nvm setup
 mkdir ~/.nvm
 
+# for split vpn
+pip3 install https://github.com/dlenski/vpn-slice/archive/v0.11.zip
+
 # Install from mac app store
 for app_id in $(cat .apps_app_store.txt | grep -oE '^[0-9]+') ; do
 	mas install ${app_id}
