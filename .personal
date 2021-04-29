@@ -7,7 +7,7 @@ alias wmv="cd ~/src/p/wheresmyvideo ; workon wheresmyvideo_env ; charm ."
 alias av="cd ~/src/p/autovine ; workon autovine_env"
 alias ofxapi="cd ~/src/p/ofx-api ; workon ofxapi_env"
 alias serve="browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000 --directory"
-alias newpost="cd ~/src/p/dustindavis.me/content/blog ; node new-post.js ; cd ../.. ; code . ; gittower . ; open http://localhost:8000 ; /Users/dustin/.nvm/versions/node/v10.16.0/bin/gatsby develop"
+alias newpost="cd ~/src/p/dustindavis.me/content/blog ; node new-post.js ; cd ../.. ; code . ; gittower ."
 alias blog="cd ~/src/p/dustindavis.me ; code . ; open http://localhost:8000 ; gatsby develop"
 alias soakers="cd ~/src/p/soakers ; code . ; open http://localhost:8080 ; npm start"
 alias daily="cd ~/src/p/dailyjournal ; ./new ; npm run watch"
@@ -23,12 +23,22 @@ alias cdie="cd ~/src/p/isaiahexplained"
 alias busettings="rsync -av $HOME/Library/Thunderbird /Volumes/Dustin/settings-backup"
 alias restoresettings="rsync -aAXv /Volumes/Dustin/settings-backup/Thunderbird $HOME/Library"
 
-# setup 
+# setup
 function clonepersonal {
-    git clone 
+	rm -rf ~/src/onair
+	git clone git@github.com:djedi/onair.git ~/src/onair
 
-    for project in dustindavis.me phurlite dailygrades morningjournal soakers lightningleague dailyjournal chase-amazon ; do
-        rm -rf "~/src/p/$project"
-        git clone "git@github.com:djedi/$project.git" "~/src/p/$project"
-    done
+	for project in dustindavis.me phurlite dailygrades morningjournal soakers lightningleague dailyjournal chase-amazon ; do
+		rm -rf ~/src/p/$project
+		git clone "git@github.com:djedi/$project.git" ~/src/p/$project
+	done
 }
+
+# wifi
+function wifireset {
+	sudo networksetup -removepreferredwirelessnetwork en0 $WIFI_SSID
+	networksetup -setairportnetwork en0 $WIFI_SSID $WIFI_PASSWORD
+}
+
+# bluetooth
+alias btre="blueutil --disconnect 88-d0-39-8d-73-4f ; blueutil --connect 88-d0-39-8d-73-4f"

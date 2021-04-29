@@ -48,6 +48,7 @@ qlstephen
 qlvideo
 quicklook-json
 recordit
+signal
 skitch
 # skype
 slack
