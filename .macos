@@ -938,6 +938,13 @@ defaults write com.twitter.twitter-mac HideInBackground -bool true
 defaults write com.tapbots.TweetbotMac OpenURLsDirectly -bool true
 
 ###############################################################################
+# Fast Scripts                                                                #
+###############################################################################
+
+# Set scripts library
+defaults write com.red-sweater.fastscripts ScriptTreePathsKey '("~/scripts")'
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
@@ -962,6 +969,7 @@ for app in "Activity Monitor" \
 	"Transmission" \
 	"Tweetbot" \
 	"Twitter" \
+	"FastScripts" \
 	"iCal"; do
 	killall "${app}" &> /dev/null
 done
