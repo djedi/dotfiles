@@ -34,6 +34,10 @@ function clonepersonal {
 	done
 }
 
+function clonemy {
+	git clone "git@github.com:djedi/$1.git" ~/src/p/$1
+}
+
 # wifi
 function wifireset {
 	sudo networksetup -removepreferredwirelessnetwork en0 $WIFI_SSID

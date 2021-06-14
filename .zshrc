@@ -115,7 +115,7 @@ export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 # Python2
 export PYTHON2PATH="$HOME/Library/Python/2.7/bin"
 export PATH=$PATH:$PYTHON2PATH
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
 # OpenSSL
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
