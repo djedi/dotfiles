@@ -61,6 +61,7 @@ Thumbs.db
 .pip
 .poetry
 .postman
+.putty
 .pyenv
 .pylint.d
 .python_history
@@ -87,6 +88,7 @@ Thumbs.db
 .zsh-update
 /bin/alerter
 Applications
+Creative Cloud Files
 cron.error.log
 cron.log
 daily.py
