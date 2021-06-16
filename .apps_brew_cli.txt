@@ -7,6 +7,7 @@ curl
 git
 gnu-sed
 grep
+heroku
 imagemagick
 jq
 lame

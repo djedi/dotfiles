@@ -80,13 +80,15 @@ export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
-if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-else
-    echo "WARNING: Can't find virtualenvwrapper.sh"
-fi
+# if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+#     source /usr/local/bin/virtualenvwrapper.sh
+# else
+#     echo "WARNING: Can't find virtualenvwrapper.sh"
+# fi
 # pyenv
-eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 autoload bashcompinit

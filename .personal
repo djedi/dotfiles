@@ -46,3 +46,6 @@ function wifireset {
 
 # bluetooth
 alias btre="blueutil --disconnect 88-d0-39-8d-73-4f ; blueutil --connect 88-d0-39-8d-73-4f"
+
+# Heroku autocomplete
+HEROKU_AC_ZSH_SETUP_PATH=/Users/dustin/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;

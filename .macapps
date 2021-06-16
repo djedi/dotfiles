@@ -8,6 +8,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 brew tap teamookla/speedtest
 brew tap homebrew-ffmpeg/ffmpeg
+brew tap heroku/brew
 
 # CLI packages
 for pkg in $(cat .apps_brew_cli.txt | grep -oE '^[^#]+') ; do
