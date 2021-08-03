@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Email</key>
+	<string>dustin@davisvillage.com</string>
+	<key>Name</key>
+	<string>Dustin Davis</string>
+	<key>Product Id</key>
+	<string>Hazel5.0</string>
+	<key>Seats</key>
+	<string>1</string>
+	<key>Signature</key>
+	<data>
+	f5NAwv71yR/darAD/NBI1kaNCB/u2PJL2nIjAmHBIhHKkU6fBq3hkmLgnd27yUexgmxw
+	svpTwMWNAGaMkat28Ojoc5RrKeMqdNdaI/qSJGPPDRqX8dpPpYc4OXk2c8azz6cqbkkq
+	dFDRUqi1CmbBUNG49rPTLuQZcCXu4IMck2A=
+	</data>
+	<key>Transaction Id</key>
+	<string>8818SNTVLWGV</string>
+</dict>
+</plist>

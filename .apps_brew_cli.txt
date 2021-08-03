@@ -13,6 +13,7 @@ jq
 lame
 m4b-tool
 mas
+mediainfo
 mp4v2
 node
 nvm
@@ -21,6 +22,7 @@ openssl
 poetry
 process
 pyenv
+pyenv-virtualenv
 python
 python3
 readline

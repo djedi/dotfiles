@@ -80,6 +80,8 @@ export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 # if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
 #     source /usr/local/bin/virtualenvwrapper.sh
 # else
@@ -109,6 +111,9 @@ export HISTSIZE=50000
 export HISTFILESIZE=50000
 # Ignore duplicate lines
 export HISTCONTROL=ignoredups:erasedups
+
+# Flutter
+export PATH="$PATH:/Users/dustin/src/flutter/bin"
 
 # Go
 export GOPATH="$HOME/go"

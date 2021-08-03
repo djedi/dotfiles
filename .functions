@@ -131,3 +131,17 @@ function uninstall_games {
 	done
 }
 
+function cleanup {
+	cd ~/Downloads
+	trash *
+	trash -ey
+	cd -
+}
+
+# Kill -9 apps with name containting string
+function premurder {
+	ps aux | rg -i $@
+}
+function murder {
+	kill -9 $(ps aux | rg -i $@ | awk '{ print $2 }')
+}
