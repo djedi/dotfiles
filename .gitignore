@@ -28,13 +28,16 @@ Thumbs.db
 .composer
 .config
 .cups
+.dart*
 .docker
 .dropbox
 .dvdcss
 .electron*
+.flutter
 .gitconfig
 .gitignore_global
 .gitkraken
+.hasura
 .heroku
 .hyper_plugins
 .hyper.js
@@ -99,6 +102,7 @@ docker
 Documents
 Downloads
 Dropbox
+go
 launcher.db
 lib
 Library

@@ -59,39 +59,70 @@ function mp3audio {
     ffmpeg -i "$1" -vn -ar 24000 -ac 1 -ab 64k "$new_name"
 }
 
-# Remove DRM and clip Audible intro and outro
-function aax2m4b() {
-	local PLEX_DIR=/Volumes/Media/Audiobooks
-	local AAXtoMP3_DIR=~/src/p/AAXtoMP3
-	local TARGET_DIR=~/Downloads/m4b
-	local AUTHCODE=`cat $AAXtoMP3_DIR/.authcode`
-	rm -rf $TARGET_DIR
-	mkdir -p $TARGET_DIR
+# Download Movie
+function downloadmovie {
+	cd ~/Downloads
 
-	# Remove DRM
-	$AAXtoMP3_DIR/AAXtoMP3 --aac -e:m4b --authcode $AUTHCODE --target_dir $TARGET_DIR -D 'converted' -F '$title by $artist' "$1"
+	rm -rf subtitles
+	rm -rf audio
+	rm -rf video
 
-	local NEWFILE=`ls $TARGET_DIR/converted/*.m4b`
-	local BASENAME=`basename -a $TARGET_DIR/converted/*.m4b`
-	echo $NEWFILE
+	echo "Enter your m3u8 URL:"
+	read M3U8_URL
+	echo "What is the title of this movie?"
+	read TITLE
+	echo "What year was it released?"
+	read YEAR
+	echo "Move to movies dir after download? (y/n)"
+	read MOVE
 
-	# Cut Audible intro/outro
-	# calculate duration to trim audible end clip
-	dur=$(ffprobe -i "$NEWFILE" -show_entries format=duration -v quiet -of csv="p=0")
-	dur=$(echo $dur | cut -d "." -f 1 | cut -d "," -f 1)
-	trim=$((dur - 6))
+	FILENAME="${TITLE//:/ -} ($YEAR).mp4"
+	echo "Downloading as $FILENAME..."
 
-	# main work to copy and trim
-	ffmpeg -hide_banner -i "$NEWFILE" -ss 2 -t $trim -map 0:a -c copy output.m4b
+	hlsdl --url "$M3U8_URL" -ncc -mc 15 -hq --mp4 "$FILENAME"
 
-	# add the cover art back on
-	mp4art -q --add $TARGET_DIR/converted/cover.jpg output.m4b
 
-	# move file
-	mv output.m4b "$BASENAME"
-	cp "$BASENAME" "$PLEX_DIR"
-	echo "Copied to $PLEX_DIR"
+	say "$TITLE download complete."
 
-	# housekeeping
-	rm -rf $TARGET_DIR
+	if [ $MOVE == "y" ]; then
+		mv "$FILENAME" /Volumes/Media/Movies
+		say "Copy to Movies directory complete."
+	fi
+
+	cd -
+}
+
+# Download TV episode
+function tvdownload {
+	cd ~/Downloads
+
+	rm -rf subtitles
+	rm -rf audio
+	rm -rf video
+
+	echo "Enter your m3u8 URL:"
+	read M3U8_URL
+	echo "What is the title of this TV Show?"
+	read TITLE
+	echo "What Season?"
+	read SEASON
+	echo "What Episode?"
+	read EPISODE
+	echo "Move to tv dir after download? (y/n)"
+	read MOVE
+
+	FILENAME="${TITLE//:/ -} S${SEASON}E${EPISODE}.mp4"
+	echo "Downloading as $FILENAME..."
+
+	hlsdl --url "$M3U8_URL" -ncc -mc 15 -hq --mp4 "$FILENAME"
+
+
+	echo "$FILENAME download complete."
+
+	if [ $MOVE == "y" ]; then
+		mv "$FILENAME" /Volumes/Media/TV
+		say "Copy to TV directory complete."
+	fi
+
+	cd -
 }
