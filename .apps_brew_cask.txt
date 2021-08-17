@@ -1,6 +1,6 @@
-adobe-creative-cloud
+# adobe-creative-cloud
 alfred
-amazon-music
+# amazon-music
 # amazon-photos
 # appzapper
 # atext
@@ -22,7 +22,7 @@ coda
 discord
 docker
 dropbox
-evernote
+# evernote
 fantastical
 fastscripts
 firefox
