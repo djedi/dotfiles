@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+
+
+function _menu {
+	PS3="Select an option: "
+	select opt in "Install xcode-select" "Get Secrets" "Clone dotfiles" "Set defalt preferences" "Install Homebrew" "Setup zsh" "Install Apps"; do
+		case $opt in
+			"Install Apps")
+				echo "roger roger"
+				install_apps
+				break
+			;;
+		esac
+	done
+}
+
+function sudo_keepalive {
+	# Ask for the administrator password upfront
+	sudo -v
+
+	# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+}
+
+function install_apps {
+	PS3="Which set of Apps would you like to install? "
+	select o in CLI Cask AppStore Others; do
+		case $o in
+			CLI)
+				sudo_keepalive
+				brew tap teamookla/speedtest
+				brew tap homebrew-ffmpeg/ffmpeg
+				brew tap heroku/brew
+				for pkg in $(cat .apps_brew_cli.txt | grep -oE '^[^#]+') ; do
+					brew install ${pkg}
+				done
+				break
+			;;
+			Cask)
+				sudo_keepalive
+				for app in $(cat .apps_brew_cask.txt | grep -oE '^[^#]+'); do
+					brew install --cask ${app}
+				done
+				break
+			;;
+			AppStore)
+				for app_id in $(cat .apps_app_store.txt | grep -oE '^[0-9]+') ; do
+					mas install ${app_id}
+				done
+				break;
+			;;
+			Others)
+				echo "todo"
+				break
+			;;
+		esac
+	done
+}
+
+_menu
+
+
+
+
