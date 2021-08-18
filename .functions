@@ -145,3 +145,8 @@ function premurder {
 function murder {
 	kill -9 $(ps aux | rg -i $@ | awk '{ print $2 }')
 }
+
+# Don't require password for sudo
+function nopasswordsudo {
+	sudo grep -qxF "$USER ALL=(ALL) NOPASSWD: ALL" /etc/sudoers || echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo EDITOR='tee -a' visudo
+}

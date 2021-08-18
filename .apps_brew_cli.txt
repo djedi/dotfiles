@@ -13,11 +13,13 @@ jq
 lame
 m4b-tool
 mas
+md5sha1sum
 mediainfo
 mp4v2
 node
 nvm
 ocrmypdf
+openconnect
 openssl
 poetry
 process
