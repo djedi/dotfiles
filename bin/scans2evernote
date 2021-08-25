@@ -12,4 +12,5 @@ for filename in ~/Documents/PreEvernote/*.pdf; do
     trash $filename
 done
 
+sleep 5
 trash $SEARCHABLE_SCANS_DIR
