@@ -36,6 +36,7 @@ homebrew/cask-drivers/fujitsu-scansnap-home
 hyper
 kindle
 launchcontrol
+logitech-camera-settings
 ngrok
 obs
 pgadmin4

@@ -132,10 +132,8 @@ function uninstall_games {
 }
 
 function cleanup {
-	cd ~/Downloads
-	trash *
-	trash -ey
-	cd -
+	trash ~/Documents/*
+	trash -e
 }
 
 # Kill -9 apps with name containting string

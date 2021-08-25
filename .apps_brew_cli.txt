@@ -38,7 +38,7 @@ sqlite
 ssh-copy-id
 terminal-notifier
 tmux
-trash
+# trash   # using https://github.com/morgant/tools-osx/blob/master/src/trash instead
 tree
 wget
 yarn
