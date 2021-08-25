@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SEARCHABLE_SCANS_DIR='/Users/dustin/Documents/SearchableScans'
+mkdir -p $SEARCHABLE_SCANS_DIR
+
+for filename in ~/Documents/PreEvernote/*.pdf; do
+    basename=`basename -a $filename`
+    echo "Converting $basename"
+    newpath="$SEARCHABLE_SCANS_DIR/$basename"
+    ocrmypdf $filename $newpath
+    open -a Evernote $newpath
+    trash $filename
+done
+
+trash $SEARCHABLE_SCANS_DIR

@@ -132,7 +132,7 @@ function uninstall_games {
 }
 
 function cleanup {
-	trash ~/Documents/*
+	trash ~/Downloads/*
 	trash -e
 }
 
