@@ -152,6 +152,11 @@ defaults write com.apple.AppleMultitouchMouse MouseButtonMode TwoButton
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+defaults write bluetoothaudiod "AAC Bitrate" -int 192
+defaults write bluetoothaudiod "Apple Initial Bitpool" -int 64
+defaults write bluetoothaudiod "Disable AAC codec" -bool false
+defaults write bluetoothaudiod "Enable AptX codec" -bool true
+defaults write bluetoothaudiod "Enable AAC codec" -bool true
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)

@@ -21,6 +21,7 @@ nvm
 ocrmypdf
 openconnect
 openssl
+parallel
 poetry
 process
 pyenv

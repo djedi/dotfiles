@@ -1,16 +1,28 @@
 #!/bin/bash
 
+SCANS_DIR='/Users/dustin/Documents/PreEvernote'
 SEARCHABLE_SCANS_DIR='/Users/dustin/Documents/SearchableScans'
-mkdir -p $SEARCHABLE_SCANS_DIR
 
-for filename in ~/Documents/PreEvernote/*.pdf; do
-    basename=`basename -a $filename`
+
+mkdir -p $SEARCHABLE_SCANS_DIR
+open $SEARCHABLE_SCANS_DIR
+
+open -a Evernote
+
+for filename in $SCANS_DIR/*.pdf; do
+    basename=`basename -a "$filename"`
     echo "Converting $basename"
     newpath="$SEARCHABLE_SCANS_DIR/$basename"
-    ocrmypdf $filename $newpath
-    open -a Evernote $newpath
-    trash $filename
+    ocrmypdf --skip-text "$filename" "$newpath" &
 done
 
-sleep 5
+wait
+
+for newpath in $SEARCHABLE_SCANS_DIR/*.pdf; do
+    open -a Evernote "$newpath" 
+done
+
+# clean up
+sleep 1
+trash $SCANS_DIR/*.pdf
 trash $SEARCHABLE_SCANS_DIR
