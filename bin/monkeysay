@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+curl -G \
+    --data-urlencode "access_token=$VOICE_MONKEY_ACCESS_TOKEN" \
+    --data-urlencode "secret_token=$VOICE_MONKEY_SECRET_TOKEN" \
+    --data-urlencode "monkey=${3:-VOICE_MONKEY_MONKEY_ID}" \
+    --data-urlencode "announcement=$1" \
+    --data-urlencode "voice=${2:-VOICE_MONKEY_VOICE}" \
+    https://api.voicemonkey.io/trigger

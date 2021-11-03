@@ -23,6 +23,10 @@ for newpath in $SEARCHABLE_SCANS_DIR/*.pdf; do
 done
 
 # clean up
-sleep 1
+for ((i=20;i>=1;i--)); do
+    echo "Cleaning up in $i seconds...\r"
+    sleep 1
+done
+echo ""
 trash $SCANS_DIR/*.pdf
 trash $SEARCHABLE_SCANS_DIR

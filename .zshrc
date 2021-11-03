@@ -50,7 +50,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx autopep8 bower brew colored-man-pages django fabric github npm pip python tmux)
+plugins=(git osx autopep8 bower brew colored-man-pages fabric github npm pip python tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,22 +76,15 @@ source ~/.media_functions
 source ~/.aliases
 
 # Python
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
+# Pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+export PIP_REQUIRE_VIRTUALENV=true
 eval "$(pyenv init -)"
+# eval "$(pyenv init --path)"
+export PATH="/Users/dustin/.pyenv/shims:${PATH}"
 eval "$(pyenv virtualenv-init -)"
-# if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-#     source /usr/local/bin/virtualenvwrapper.sh
-# else
-#     echo "WARNING: Can't find virtualenvwrapper.sh"
-# fi
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 autoload bashcompinit
 bashcompinit
@@ -120,9 +113,9 @@ export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 # Python2
-export PYTHON2PATH="$HOME/Library/Python/2.7/bin"
-export PATH=$PATH:$PYTHON2PATH
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+# export PYTHON2PATH="$HOME/Library/Python/2.7/bin"
+# export PATH=$PATH:$PYTHON2PATH
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
 # OpenSSL
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"

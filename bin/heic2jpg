@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# You will need rename, imagemagick, and trash installed
+# brew install rename imagemagick trash
+
+rename 's/\.HEIC/_.heic/' *.HEIC
+rename 's/_\.heic/.heic/' *_.heic
+for f in *.heic; do
+    new_name="${f%.heic}.jpg"
+    echo "Converting $f to $new_name ..."
+    magick $f $new_name
+done
+
+read -p "Delete HEIC files? (y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    trash *.heic
+fi
