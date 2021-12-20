@@ -41,6 +41,7 @@ terminal-notifier
 tmux
 # trash   # using https://github.com/morgant/tools-osx/blob/master/src/trash instead
 tree
+watchman
 wget
 yarn
 youtube-dl

@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+CERTS_DIR="$(pwd)/certs"
+mkdir -p $CERTS_DIR
+
+# location to change TXT records
+open https://cloud.digitalocean.com/networking/domains/inzolo.com?i=da77a6
+
+# TODO: Move to namecheap and automate setting the TXT DNS https://www.namecheap.com/support/api/methods/domains-dns/set-hosts/
+
+docker run -it --rm --name certbot \
+    --mount "type=bind,src=$(pwd)/certs,dst=/etc/letsencrypt" \
+    -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
+    certbot/certbot certonly --manual --preferred-challenges dns -d "*.inzolo.com"
+
+for filename in ./certs/live/inzolo.com/*; do
+    bname=$(basename -a $filename)
+    cat $filename | ssh inzolo@inzolo.com "sudo tee -a /etc/letsencrypt/live/inzolo.com/$bname"
+done
+ssh inzolo@inzolo.com "sudo service nginx restart"

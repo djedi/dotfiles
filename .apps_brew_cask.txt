@@ -14,7 +14,8 @@ bitwarden
 brave-browser
 burp-suite
 calibre
-camtasia
+# camtasia
+capto
 cleanmymac
 coda
 # cyberduck

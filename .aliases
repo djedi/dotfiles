@@ -7,6 +7,12 @@ alias lsp="sudo lsof -i -n -P | grep LISTEN"
 alias largest="du -a | sort -n -r | head -n 10"
 alias refreshdesktop="killall Dock"
 
+# mv with progress
+function mvp {
+	rsync --info=progress2 "$1" "$2"
+	rm "$1"
+}
+
 # sqlitebrowser
 alias sqlitebrowser="/Applications/DB\ Browser\ for\ SQLite.app/Contents/MacOS/DB\ Browser\ for\ SQLite"
 
@@ -48,6 +54,7 @@ else
 	alias drmid="docker rmi $( docker images -q -f dangling=true)"
 	alias drun=drun-fn
 	alias dsr=dsr-fn
+	alias dnuke="docker container rm -f $(docker container ls -qa) ; docker image rm -f $(docker image ls -q)"
 fi
 
 # get ip address of url
@@ -63,3 +70,9 @@ alias st="speedtest --server-id 12652"
 
 # Git Tower
 alias gt="gittower ."
+
+# Git
+alias gitloc="git ls-files | xargs wc -l"
+
+# Python
+alias superpip="PIP_REQUIRE_VIRTUALENV=false pip"

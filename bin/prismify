@@ -5,7 +5,7 @@
 # Run (prismify https://www.youtube.com/watch\?v\=kfVsfOSbJY0) 
 
 # Personalization
-DOWNLOAD_DIR="/Users/dustin/Downloads/prismify"
+DOWNLOAD_DIR="/Users/dustin/Downloads/prismify-$RANDOM"
 PLEX_DIR="/Volumes/Media/Music/"
 
 # Not sure how to automatically get Artist name, so I'll just ask for it.
@@ -17,6 +17,9 @@ read ARTIST
 
 echo -n "Cover URL (Leave blank to auto generate from YouTube): " 
 read COVER_URL
+
+echo -n "Move to Synology and cleanup automatically? [Y/n] "
+read HOUSEKEEPING
 
 # Put everything in my downloads directory
 rm -rf $DOWNLOAD_DIR
@@ -63,12 +66,14 @@ ffmpeg -i temp.mp3 -i cover.jpg -map 0:0 -map 1:0 -c copy -id3v2_version 3 \
     -metadata album_artist=$ARTIST \
     $NEW_FILENAME
 
-# Move the final file to NAS for Plex to pick up
-mkdir -p "$PLEX_DIR$ARTIST"
-mv $NEW_FILENAME "$PLEX_DIR$ARTIST"
+if [[ $HOUSEKEEPING != 'n' ]] ; then
+    # Move the final file to NAS for Plex to pick up
+    mkdir -p "$PLEX_DIR$ARTIST"
+    mv $NEW_FILENAME "$PLEX_DIR$ARTIST"
 
-# Move back to original directory
-cd -
+    # Move back to original directory
+    cd -
 
-# housekeeping
-rm -rf $DOWNLOAD_DIR
+    # housekeeping
+    rm -rf $DOWNLOAD_DIR
+fi

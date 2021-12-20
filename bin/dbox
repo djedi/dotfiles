@@ -1,0 +1,5 @@
+#!/bin/zsh
+#cd ~/dev/uplynk/beam/web # change to your own path, obviously
+UPLYNK_REQUIRE_VIRTUALENV=0 UPLYNK_SITE=downlynk PYTHONPATH="/Users/dustin/dev/devtools" /Users/dustin/.pyenv/shims/python /Users/dustin/dev/devtools/uplynktools/cloud_auth.py get aws cms
+UPLYNK_REQUIRE_VIRTUALENV=0 UPLYNK_SITE=downlynk PYTHONPATH="/Users/dustin/dev/devtools" /Users/dustin/.pyenv/shims/python /Users/dustin/dev/devtools/uplynktools/cloud_auth.py get atl developer
+UPLYNK_REQUIRE_VIRTUALENV=0 AWS_PROFILE=downlynk UPLYNK_SITE=downlynk PYTHONPATH="/Users/dustin/dev/devtools" /Users/dustin/.pyenv/shims/python /Users/dustin/dev/devtools/uplynktools/server.py $*

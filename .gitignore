@@ -19,6 +19,7 @@ Thumbs.db
 .android
 .anyconnect
 .aws
+.babel.json
 .bash_history
 .BurpSuite
 .cache
@@ -29,6 +30,7 @@ Thumbs.db
 .config
 .cups
 .dart*
+.degit
 .docker
 .dropbox
 .dvdcss
@@ -37,6 +39,8 @@ Thumbs.db
 .gitconfig
 .gitignore_global
 .gitkraken
+.gradle
+.gvm
 .hasura
 .heroku
 .hyper_plugins
@@ -60,6 +64,7 @@ Thumbs.db
 .nuuid.ini
 .nvm
 .oh-my-zsh
+.parallel
 .personal
 .pgadmin
 .pip
@@ -91,6 +96,7 @@ Thumbs.db
 .zsh_sessions
 .zsh-update
 /bin/alerter
+/bin/certs
 Applications
 Creative Cloud Files
 cron.error.log
@@ -103,6 +109,7 @@ docker
 Documents
 Downloads
 Dropbox
+fastonosql.log
 go
 init.sh
 launcher.db
@@ -113,6 +120,8 @@ Music
 n
 openconnect*
 Pictures
+Plugins
 Public
 Sites
 src
+StudioProjects

@@ -85,7 +85,8 @@ function downloadmovie {
 	say "$TITLE download complete."
 
 	if [ $MOVE == "y" ]; then
-		mv "$FILENAME" /Volumes/Media/Movies
+		rsync --info=progress2 "$FILENAME" /Volumes/Media/Movies
+		rm "$FILENAME"
 		say "Copy to Movies directory complete."
 	fi
 
