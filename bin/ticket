@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+echo "What repo:"
+echo "1. Services"
+echo "2. CMS"
+echo "3. Uplynkrepo"
+read -p "Select option: " repo_number
+
+case $repo_number in
+    1)
+        repo="services"
+        main="main"
+        ;;
+    2)
+        repo="cms"
+        main="master"
+        ;;
+    3) 
+        repo="uplynkrepo"
+        main="main"
+        ;;
+    *)
+        echo "$repo_number is an invalid option. Bye."
+        exit
+        ;;
+esac
+
+echo "Repo: $repo"
+echo "Base: $main"
+
+echo -n "What is your ticket number? "
+read ticket
+
+echo -n "And a short description? "
+read short_desc
+
+slug=$(echo $short_desc | iconv -t ascii//TRANSLIT | sed -E 's/[~\^]+//g' | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+\|-+$//g' | sed -E 's/^-+//g' | sed -E 's/-+$//g' | tr A-Z a-z)
+branch="dd/${ticket}_$slug"
+echo "Branch: $branch"
+
+cd "$SOURCE_CODE/$repo"
+git reset --hard
+git checkout $main
+git pull -r
+git checkout -b "$branch"
+code .
+gittower .

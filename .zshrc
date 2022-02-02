@@ -70,10 +70,10 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/t
 # fi
 
 # Secrets should go in this file so they are not on github
-source ~/.secrets
-source ~/.functions
-source ~/.media_functions
-source ~/.aliases
+source ~/secrets/.secrets
+source ~/init/.functions
+source ~/init/.media_functions
+source ~/init/.aliases
 
 # Python
 # Pyenv

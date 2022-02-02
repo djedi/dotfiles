@@ -59,6 +59,10 @@ function mp3audio {
     ffmpeg -i "$1" -vn -ar 24000 -ac 1 -ab 64k "$new_name"
 }
 
+function yt2m4a {
+	youtube-dl --extract-audio --audio-format m4a --audio-quality 320K --add-metadata $@
+}
+
 # Download Movie
 function downloadmovie {
 	cd ~/Downloads

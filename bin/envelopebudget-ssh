@@ -4,17 +4,17 @@ CERTS_DIR="$(pwd)/certs"
 mkdir -p $CERTS_DIR
 
 # location to change TXT records
-open https://cloud.digitalocean.com/networking/domains/inzolo.com?i=da77a6
+open https://dcc.godaddy.com/manage/ENVELOPEBUDGET.COM/dns?plid=1
 
 # TODO: Move to namecheap and automate setting the TXT DNS https://www.namecheap.com/support/api/methods/domains-dns/set-hosts/
 
 docker run -it --rm --name certbot \
     --mount "type=bind,src=$(pwd)/certs,dst=/etc/letsencrypt" \
     -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
-    certbot/certbot certonly --manual --preferred-challenges dns -d "inzolo.com" -d "*.inzolo.com"
+    certbot/certbot certonly --manual --preferred-challenges dns -d "envelopebudget.com" -d "*.envelopebudget.com"
 
-for filename in $(pwd)/certs/live/inzolo.com/*; do
+for filename in $(pwd)/certs/live/envelopebudget.com/*; do
     bname=$(basename -a $filename)
-    cat $filename | ssh inzolo@inzolo.com "sudo tee -a /etc/letsencrypt/live/inzolo.com/$bname"
+    cat $filename | ssh envelope@envelopebudget.com "sudo tee -a /etc/ssl/localcerts/envelopebudget.com/$bname"
 done
-ssh inzolo@inzolo.com "sudo service nginx restart"
+ssh envelope@envelopebudget.com "sudo service nginx restart"

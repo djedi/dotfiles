@@ -55,6 +55,7 @@ Thumbs.db
 .lesshst
 .licenses
 .local
+.mongodb
 .mongossl
 .mono
 .my_bin
@@ -98,6 +99,7 @@ Thumbs.db
 /bin/alerter
 /bin/certs
 Applications
+beetslibrary.db
 Creative Cloud Files
 cron.error.log
 cron.log
@@ -122,6 +124,8 @@ openconnect*
 Pictures
 Plugins
 Public
+secrets
 Sites
 src
 StudioProjects
+SynologyDrive
