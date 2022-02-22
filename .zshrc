@@ -70,7 +70,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/t
 # fi
 
 # Secrets should go in this file so they are not on github
-source ~/secrets/.secrets
+source ~/sd/secrets/.secrets
 source ~/init/.functions
 source ~/init/.media_functions
 source ~/init/.aliases

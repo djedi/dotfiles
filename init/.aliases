@@ -72,10 +72,13 @@ alias grades="cd ~/src/p/dailygrades ; node missing.js email ; cd -"
 alias st="speedtest --server-id 12652"
 
 # Git Tower
-alias gt="gittower ."
+alias gt="gittower `git rev-parse --show-toplevel`"
 
 # Git
 alias gitloc="git ls-files | xargs wc -l"
 
 # Python
 alias superpip="PIP_REQUIRE_VIRTUALENV=false pip"
+
+# tmux
+alias tks="tmux kill-server"
