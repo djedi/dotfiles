@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+pytest --cov-report html --cov . --disable-pytest-warnings -vv "$1" && open htmlcov/index.html

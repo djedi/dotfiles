@@ -129,3 +129,6 @@ Sites
 src
 StudioProjects
 SynologyDrive
+/sd
+/dump.rdb
+/.github_api_token

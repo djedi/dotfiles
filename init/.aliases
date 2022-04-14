@@ -72,7 +72,7 @@ alias grades="cd ~/src/p/dailygrades ; node missing.js email ; cd -"
 alias st="speedtest --server-id 12652"
 
 # Git Tower
-alias gt="gittower `git rev-parse --show-toplevel`"
+alias gt="gittower ."
 
 # Git
 alias gitloc="git ls-files | xargs wc -l"
