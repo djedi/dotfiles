@@ -50,11 +50,11 @@ qlstephen
 qlvideo
 quicklook-json
 recordit
+rectangle
 signal
 skitch
 # skype
 slack
-spectacle
 sublime-text
 suspicious-package
 # teamviewer

@@ -9,8 +9,7 @@ alias refreshdesktop="killall Dock"
 
 # mv with progress
 function mvp {
-	rsync -av --info=progress2 "$1" "$2"
-	trash "$1"
+	rsync -av --info=progress2 "$1" "$2" && trash "$1"
 }
 function cpp {
 	rsync -za --info=progress2 "$1" "$2"

@@ -8,7 +8,7 @@ https://unsplash.com/photos/K2s_YE031CA/download?force=true
 const { exec } = require("child_process");
 const fs = require("fs");
 const path = require("path");
-const request = require("request");
+const https = require("https");
 
 const WALLPAPER_DIR = "/Users/dustin/Pictures/Wallpaper";
 
@@ -19,9 +19,42 @@ const basename = urlParts[urlParts.length - 1];
 const downloadUri = `${url}/download?force=true`;
 const downloadPath = path.join(WALLPAPER_DIR, basename + ".jpg");
 
-request.head(url, () => {
-  request(downloadUri).pipe(fs.createWriteStream(downloadPath));
-});
+const download = (url, dest, cb) => {
+	console.log(`Downloading ${url} to ${dest}`);
+	const file = fs.createWriteStream(dest);
 
-exec(`open ${WALLPAPER_DIR}`);
-exec("killall Dock");
+	const request = https.get(url, (response) => {
+		// check if response is success
+		// console.log(`Response status: ${response.statusCode}`);
+		if (response.statusCode === 302) {
+			download(response.headers.location, dest, cb);
+			return;
+		}
+		if (response.statusCode !== 200) {
+			return cb("Response status was " + response.statusCode);
+		}
+
+		response.pipe(file);
+	});
+
+	// close() is async, call cb after close completes
+	file.on("finish", () => file.close(cb));
+
+	// check for request error too
+	request.on("error", (err) => {
+		fs.unlink(dest, () => cb(err.message)); // delete the (partial) file and then return the error
+	});
+
+	file.on("error", (err) => {
+		// Handle errors
+		fs.unlink(dest, () => cb(err.message)); // delete the (partial) file and then return the error
+	});
+};
+
+download(downloadUri, downloadPath, after);
+
+function after() {
+	exec(`open ${WALLPAPER_DIR}`);
+	exec(`open ${downloadPath}`);
+	exec("killall Dock");
+}
