@@ -1,9 +1,9 @@
-# adobe-creative-cloud
+adobe-creative-cloud
 alfred
 # amazon-music
 # amazon-photos
 # appzapper
-# atext
+atext
 audacity
 audiobook-builder
 # avibrazil-rdm
@@ -14,36 +14,39 @@ bitwarden
 brave-browser
 burp-suite
 calibre
-# camtasia
+camtasia
 capto
+cardhop
 cleanmymac
 coda
 # cyberduck
 # dash
 discord
 docker
-dropbox
+# dropbox
 # evernote
 fantastical
-fastscripts
+# fastscripts
 firefox
 fluid
 flycut
-google-chrome
+# google-chrome
 grammarly
-# handbrake
+handbrake
 hazel
 homebrew/cask-drivers/fujitsu-scansnap-home
 hyper
 kindle
 launchcontrol
 logitech-camera-settings
-ngrok
+# ngrok
 obs
+pandora
 pgadmin4
 plex
 plexamp
 postman
+pycharm-ce
 qlcolorcode
 qlmarkdown
 qlstephen
@@ -55,8 +58,9 @@ signal
 skitch
 # skype
 slack
-sublime-text
+# sublime-text
 suspicious-package
+synology-drive
 # teamviewer
 telegram
 the-unarchiver

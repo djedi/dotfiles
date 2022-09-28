@@ -69,6 +69,7 @@ alias grades="cd ~/src/p/dailygrades ; node missing.js email ; cd -"
 
 # Speedtest
 alias st="speedtest --server-id 12652"
+alias stl="speedtest -L"
 
 # Git Tower
 alias gt="gittower ."

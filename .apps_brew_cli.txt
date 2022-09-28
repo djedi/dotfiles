@@ -7,8 +7,9 @@ bzip2
 curl
 git
 gnu-sed
+go
 grep
-heroku
+# heroku
 imagemagick
 jq
 lame
@@ -45,5 +46,5 @@ tree
 watchman
 wget
 yarn
-youtube-dl
+yt-dlp
 zlib
