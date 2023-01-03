@@ -10,7 +10,7 @@ const fs = require("fs");
 const path = require("path");
 const https = require("https");
 
-const WALLPAPER_DIR = "/Users/dustin/Pictures/Wallpaper";
+const WALLPAPER_DIR = "/Users/dustin/sd/Pictures/Wallpaper";
 
 const url = process.argv[2];
 

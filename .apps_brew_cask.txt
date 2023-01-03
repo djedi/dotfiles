@@ -54,6 +54,7 @@ qlvideo
 quicklook-json
 recordit
 rectangle
+scrivener
 signal
 skitch
 # skype

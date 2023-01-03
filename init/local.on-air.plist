@@ -15,7 +15,7 @@
 	<array>
 		<string>sh</string>
 		<string>-c</string>
-		<string>/Users/dustin/src/onair/on-air.sh</string>
+		<string>/Users/dustin/sd/src/onair/on-air.sh</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>
@@ -24,6 +24,6 @@
 	<key>StandardOutPath</key>
 	<string>/tmp/local.on-air.out</string>
 	<key>WorkingDirectory</key>
-	<string>/Users/dustin/src/onair</string>
+	<string>/Users/dustin/sd/src/onair</string>
 </dict>
 </plist>
