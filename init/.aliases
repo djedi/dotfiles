@@ -41,6 +41,7 @@ alias nl="npm list --depth=0 2>/dev/null"
 if ! docker info >/dev/null 2>&1; then
     echo "Docker does not seem to be running, no Docker aliases were set."
 else
+	alias docker-compose="docker compose"
 	alias dcomp="docker-compose"
 	alias dcu="docker-compose up -d"
 	alias dcd="docker-compose down"

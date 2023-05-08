@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: $0 <url>"
+  exit 1
+fi
+
+url=$1
+
+echo "⭐️ Downloading favicon for $url..."
+
+curl -s $url > temp.html
+
+# Download the HTML content of the URL and extract the favicon link
+favicon_url=$(curl -s $url | grep -o '<link rel="shortcut icon" href="[^"]*"' | sed 's/<link rel="shortcut icon" href="//' | sed 's/"//')
+
+# If the favicon URL is relative, make it absolute
+if [[ $favicon_url == /favicon.ico ]]; then
+  favicon_url=${url}${favicon_url}
+elif [[ $favicon_url == */favicon.ico ]]; then
+  favicon_url=${url}/${favicon_url}
+fi
+
+# Download the favicon and save it to a file
+curl -s $favicon_url > favicon.ico
+
+echo "Favicon downloaded to favicon.ico"
