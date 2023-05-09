@@ -1,0 +1,68 @@
+Version:
+  major: 1
+  minor: 1
+
+Common:
+  black_char: ':*?"<>|\/'
+  black_name:
+    - '@tmp'
+    - '@eaDir'
+    - '.SynologyWorkingDirectory'
+    - '#recycle'
+    - 'desktop.ini'
+    - '.ds_store'
+    - 'Icon\r'
+    - 'thumbs.db'
+    - '$Recycle.Bin'
+    - '@sharebin'
+    - 'System Volume Information'
+    - 'Program Files'
+    - 'Program Files (x86)'
+    - 'ProgramData'
+    - '#snapshot'
+    - 'node_modules'
+  max_length: 255
+  max_path: 768
+
+File:
+  black_name:
+    - '@tmp'
+    - '@eaDir'
+    - '.SynologyWorkingDirectory'
+    - '#recycle'
+    - 'desktop.ini'
+    - '.ds_store'
+    - 'Icon\r'
+    - 'thumbs.db'
+    - '$Recycle.Bin'
+    - '@sharebin'
+    - 'tmp'
+    - 'temp'
+    - 'System Volume Information'
+    - 'Program Files'
+    - 'Program Files (x86)'
+    - 'ProgramData'
+    - '#snapshot'
+  black_prefix: '~'
+  max_size: 0
+
+Directory:
+  black_name:
+    - '@tmp'
+    - '@eaDir'
+    - '.SynologyWorkingDirectory'
+    - '#recycle'
+    - 'desktop.ini'
+    - '.ds_store'
+    - 'Icon\r'
+    - 'thumbs.db'
+    - '$Recycle.Bin'
+    - '@sharebin'
+    - 'System Volume Information'
+    - 'Program Files'
+    - 'Program Files (x86)'
+    - 'ProgramData'
+    - '#snapshot'
+    - 'node_modules'
+
+EA:
