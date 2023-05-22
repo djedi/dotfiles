@@ -60,3 +60,6 @@ done
 # Older apps with no installers
 tar -xf /Volumes/Dustin/Apps/Evernote.app.tar.gz -C /Applications
 tar -xf /Volumes/Dustin/Apps/LightPaper.app.tar.gz -C /Applications
+
+# Install hlsdl (node version)
+npm install --global @warren-bank/node-hls-downloader

@@ -79,7 +79,7 @@ function reopen() {
 
 # rsync backup with progress (must have rsync v3 or higher)
 function backup() {
-	rsync -a --info=progress2 $@
+	rsync -au --info=progress2 $@
 }
 
 # Make a new executable file

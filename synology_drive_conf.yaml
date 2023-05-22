@@ -21,6 +21,7 @@ Common:
     - 'ProgramData'
     - '#snapshot'
     - 'node_modules'
+    - '.git'
   max_length: 255
   max_path: 768
 
@@ -64,5 +65,8 @@ Directory:
     - 'ProgramData'
     - '#snapshot'
     - 'node_modules'
+    - 'objects'
+    - 'logs'
+    - '.git'
 
 EA:

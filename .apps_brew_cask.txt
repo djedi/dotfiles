@@ -65,7 +65,7 @@ synology-drive
 # teamviewer
 telegram
 the-unarchiver
-# thunderbird
+thunderbird
 tower
 # tweetbot
 visual-studio-code
