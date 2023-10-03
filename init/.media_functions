@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+alias youtube-dl='yt-dlp'
+
 fixhls() {
 	ffmpeg -i "$1" -movflags faststart -acodec copy -vcodec copy -scodec copy "$2"
 }

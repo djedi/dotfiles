@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+DOWNLOAD_LOCATION=$HOME/Downloads
+
+yt-dlp --extract-audio --audio-format mp3 --audio-quality 192K --output "$DOWNLOAD_LOCATION/%(title)s.mp3" "$1"

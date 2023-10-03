@@ -30,6 +30,7 @@ fantastical
 firefox
 fluid
 flycut
+fujitsu-scansnap-home
 # google-chrome
 grammarly
 handbrake
@@ -66,6 +67,7 @@ synology-drive
 telegram
 the-unarchiver
 thunderbird
+topaz-gigapixel-ai
 tower
 # tweetbot
 visual-studio-code

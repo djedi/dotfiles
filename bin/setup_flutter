@@ -1,0 +1,62 @@
+#!/bin/zsh
+
+set -e
+
+FLUTTER_VERSION="3.10.2"
+FLUTTER_CHANNEL="stable"
+FLUTTER_PATH="$HOME/dart/flutter"
+
+# Install Flutter
+# echo "🦋 Installing Flutter $FLUTTER_VERSION"
+# rm -rf $HOME/dart/flutter
+# cd $HOME/downloads
+# wget "https://storage.googleapis.com/flutter_infra_release/releases/$FLUTTER_CHANNEL/macos/flutter_macos_$FLUTTER_VERSION-$FLUTTER_CHANNEL.zip"
+# cd $HOME/dart
+# unzip $HOME/downloads/flutter_macos_$FLUTTER_VERSION-$FLUTTER_CHANNEL.zip
+# rm $HOME/downloads/flutter_macos_$FLUTTER_VERSION-$FLUTTER_CHANNEL.zip
+
+# Add Flutter to PATH if not already there
+if [[ ":$PATH:" != *":$FLUTTER_PATH/bin:"* ]]; then
+  echo "🦋 Adding Flutter to PATH"
+  echo "export PATH=\"\$PATH:$FLUTTER_PATH/bin\"" >> $HOME/.zshrc
+fi
+
+# Install Android Studio & SDK with brew
+echo "🦋 Installing Android Studio"
+brew install --cask android-studio android-sdk android-commandlinetools
+
+# Install Android SDK
+echo "🦋 Installing Android SDK"
+sdkmanager --install "cmdline-tools;latest"
+
+# Open Android Studio to install SDK
+# echo "🦋 Opening Android Studio to install SDK"
+# open -a /Applications/Android\ Studio.app
+
+# Install Xcode if not installed
+if ! xcode-select -p &> /dev/null; then
+  echo "🦋 Installing Xcode"
+  mas install 497799835
+fi
+
+# Install Xcode command line tools if not installed
+if ! xcode-select -p &> /dev/null; then
+  echo "🦋 Installing Xcode command line tools"
+  xcode-select --install
+fi
+
+# Configure Xcode command line tools
+echo "🦋 Configuring Xcode command line tools"
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+sudo xcodebuild -runFirstLaunch
+
+# Install cocoapods
+echo "🦋 Installing cocoapods"
+brew install cocoapods
+
+# Set PATH for this script
+source $HOME/.zshrc
+
+# Run Flutter doctor
+echo "🦋 Running Flutter doctor"
+flutter doctor
