@@ -1,71 +1,134 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+# Function to install homebrew
+install_homebrew() {
+	# Check if Homebrew is installed
+	if ! command -v brew &> /dev/null; then
+		# Install Homebrew
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	fi
+}
+
+# Function to install oh-my-zsh
+install_oh_my_zsh() {
+	# Check if oh-my-zsh is installed
+	if [ ! -d "$HOME/.oh-my-zsh" ]; then
+		# Install oh-my-zsh
+		sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	fi
+}
+
+# Function to install CLI apps
+install_cli_apps() {
+    echo "Installing CLI apps..."
+
+	# CLI packages
+	for pkg in $(cat .apps_brew_cli.txt | grep -oE '^[^#]+') ; do
+		brew install ${pkg}
+	done
+
+	brew tap teamookla/speedtest
+	brew tap homebrew-ffmpeg/ffmpeg
+	# brew tap heroku/brew
+	# brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac
+
+	# Install browser-sync globally for `serve` alias
+	npm install --global browser-sync
+
+	# Install alerter - no other option I know of at the moment
+	# cd ~/Downloads
+	# wget --no-check-certificate https://github.com/vjeantet/alerter/releases/download/004/alerter_v004_darwin_amd64.zip
+	# unzip alerter_v004_darwin_amd64.zip
+	# mv alerter ~/bin
+	# rm alerter_v004_darwin_amd64.zip
+	# cd -
+
+	# Install hlsdl (node version)
+	# npm install --global @warren-bank/node-hls-downloader
+
+	# nvm setup
+	mkdir ~/.nvm
+}
+
+# Function to install Cask apps
+install_cask_apps() {
+    echo "Installing Cask apps..."
+
+	# Brew Cask Apps
+	for app in $(cat .apps_brew_cask.txt | grep -oE '^[^#]+'); do
+		brew install --cask ${app}
+	done
+}
+
+# Function to install Mac App Store apps
+install_mac_store_apps() {
+    echo "Installing Mac Store apps..."
+
+	# Install from mac app store
+	for app_id in $(cat .apps_app_store.txt | grep -oE '^[0-9]+') ; do
+		mas install ${app_id}
+	done
+}
+
+# Function to copy launch agents
+copy_launch_agents() {
+	# Copy Launch Agents
+	cp ~/init/*.plist ~/Library/LaunchAgents
+	sed -i '' "s/IFTTT_PLACEHOLDER/$IFTTT_MAKER_KEY/" ~/Library/LaunchAgents/local.on-air.plist
+	for f in ~/Library/LaunchAgents/*.plist ; do
+		launchctl load ${f}
+	done
+}
+
+# Main menu function
+main_menu() {
+    while true; do
+        echo "Main Menu:"
+		echo "1. Install Homebrew"
+		echo "2. Install oh-my-zsh"
+        echo "3. Install CLI apps"
+        echo "4. Install Cask apps"
+        echo "5. Install Mac Store apps"
+		echo "6. Copy Launch Agents"
+        echo "0. Exit"
+        read -p "Enter your choice: " choice
+
+        case "$choice" in
+            1)
+				install_homebrew
+				;;
+			2)
+				install_oh_my_zsh
+				;;
+			3)
+                install_cli_apps
+                ;;
+            4)
+                install_cask_apps
+                ;;
+            5)
+                install_mac_store_apps
+                ;;
+			6)
+				copy_launch_agents
+				;;
+            0)
+                echo "Exiting..."
+                exit 0
+                ;;
+            *)
+                echo "Invalid choice. Please select 1, 2, 3, or 0."
+                ;;
+        esac
+        echo
+    done
+}
 
 # Ask for the administrator password upfront
-sudo -v
+# sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# Check if Homebrew is installed
-if ! command -v brew &> /dev/null; then
-	# Install Homebrew
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-
-# Check if oh-my-zsh is installed
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-	# Install oh-my-zsh
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
-
-brew tap teamookla/speedtest
-brew tap homebrew-ffmpeg/ffmpeg
-brew tap heroku/brew
-
-# CLI packages
-for pkg in $(cat .apps_brew_cli.txt | grep -oE '^[^#]+') ; do
-	brew install ${pkg}
-done
-
-brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac
-
-# Brew Cask Apps
-for app in $(cat .apps_brew_cask.txt | grep -oE '^[^#]+'); do
-	brew install --cask ${app}
-done
-
-# Install browser-sync globally for `serve` alias
-npm install --global browser-sync
-
-# Copy Launch Agents
-cp ~/init/*.plist ~/Library/LaunchAgents
-sed -i '' "s/IFTTT_PLACEHOLDER/$IFTTT_MAKER_KEY/" ~/Library/LaunchAgents/local.on-air.plist
-for f in ~/Library/LaunchAgents/*.plist ; do
-	launchctl load ${f}
-done
-
-# Install alerter - no other option I know of at the moment
-cd ~/Downloads
-wget --no-check-certificate https://github.com/vjeantet/alerter/releases/download/004/alerter_v004_darwin_amd64.zip
-unzip alerter_v004_darwin_amd64.zip
-mv alerter ~/bin
-rm alerter_v004_darwin_amd64.zip
-cd -
-
-# nvm setup
-mkdir ~/.nvm
-
-# for split vpn
-pip3 install https://github.com/dlenski/vpn-slice/archive/v0.11.zip
-
-# Install from mac app store
-for app_id in $(cat .apps_app_store.txt | grep -oE '^[0-9]+') ; do
-	mas install ${app_id}
-done
-
-# Older apps with no installers
-# tar -xf /Volumes/Dustin/Apps/Evernote.app.tar.gz -C /Applications
-# tar -xf /Volumes/Dustin/Apps/LightPaper.app.tar.gz -C /Applications
-
-# Install hlsdl (node version)
-npm install --global @warren-bank/node-hls-downloader
+# Start the main menu
+main_menu

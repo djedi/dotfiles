@@ -50,7 +50,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git macos brew colored-man-pages github npm pip python tmux)
+plugins=(aliases brew colored-man-pages docker docker-compose dotenv git github iterm2 macos node npm nvm pip python rsync tmux vscode)
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -68,6 +69,8 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/t
 # else
 #   export EDITOR='mvim'
 # fi
+
+source ~/.zprofile
 
 # Secrets should go in this file so they are not on github
 source ~/sd/secrets/.secrets

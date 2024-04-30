@@ -1,50 +1,50 @@
-ack
-awscli
+# ack
+# awscli
 bat
 bitwarden-cli
-blueutil
-bzip2
+# blueutil
+# bzip2
 curl
 git
-gnu-sed
-go
+# gnu-sed
+# go
 grep
 # heroku
 imagemagick
-jq
-lame
+# jq
+# lame
 m4b-tool
-mas
-md5sha1sum
-mediainfo
-mp4v2
+# mas
+# md5sha1sum
+# mediainfo
+# mp4v2
 node
 nvm
 ocrmypdf
-openconnect
-openssl
-parallel
-poetry
-process
+# openconnect
+# openssl
+# parallel
+# poetry
+# process
 pyenv
 pyenv-virtualenv
 python
 python3
-readline
-rename
+# readline
+# rename
 ripgrep
 rsync
-rtmpdump
+# rtmpdump
 speedtest
-sponge
+# sponge
 sqlite
 ssh-copy-id
-terminal-notifier
+# terminal-notifier
 tmux
 # trash   # using https://github.com/morgant/tools-osx/blob/master/src/trash instead
-tree
-watchman
+# tree
+# watchman
 wget
 yarn
 yt-dlp
-zlib
+# zlib

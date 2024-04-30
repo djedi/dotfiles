@@ -27,12 +27,12 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 sudo nvram SystemAudioVolume=" "
 
 # Disable transparency in the menu bar and elsewhere on Yosemite
-defaults write com.apple.universalaccess reduceTransparency -bool true
+# defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Set to dark mode
 # defaults write -g AppleInterfaceStyle -string "Dark"
 # Set dark/light to auto
-defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool true
+# defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool true
 
 # Set accent color to green
 defaults write NSGlobalDomain AppleAccentColor -int 3
@@ -48,7 +48,7 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
 # Disable the over-the-top focus ring animation
-defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
+# defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
 
 # Adjust toolbar title rollover delay
 defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
@@ -82,13 +82,13 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Display ASCII control characters using caret notation in standard text views
 # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
-defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
+# defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
 
 # Disable Resume system-wide
-defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+# defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Disable automatic termination of inactive apps
-defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+# defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 # Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
@@ -151,12 +151,12 @@ defaults write com.apple.AppleMultitouchMouse MouseButtonMode TwoButton
 # defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Increase sound quality for Bluetooth headphones/headsets
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
-defaults write bluetoothaudiod "AAC Bitrate" -int 192
-defaults write bluetoothaudiod "Apple Initial Bitpool" -int 64
-defaults write bluetoothaudiod "Disable AAC codec" -bool false
-defaults write bluetoothaudiod "Enable AptX codec" -bool true
-defaults write bluetoothaudiod "Enable AAC codec" -bool true
+# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+# defaults write bluetoothaudiod "AAC Bitrate" -int 192
+# defaults write bluetoothaudiod "Apple Initial Bitpool" -int 64
+# defaults write bluetoothaudiod "Disable AAC codec" -bool false
+# defaults write bluetoothaudiod "Enable AptX codec" -bool true
+# defaults write bluetoothaudiod "Enable AAC codec" -bool true
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)

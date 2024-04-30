@@ -15,10 +15,10 @@ brave-browser
 burp-suite
 calibre
 camtasia
-capto
-cardhop
+# capto
+# cardhop
 cleanmymac
-coda
+# coda
 # cyberduck
 # dash
 discord
@@ -28,15 +28,16 @@ docker
 fantastical
 # fastscripts
 firefox
-fluid
-flycut
+# fluid
+# flycut
 fujitsu-scansnap-home
+gitkraken
 # google-chrome
 grammarly
-handbrake
-hazel
+# handbrake
+# hazel
 homebrew/cask-drivers/fujitsu-scansnap-home
-hyper
+# hyper
 kindle
 launchcontrol
 logitech-camera-settings
@@ -47,17 +48,17 @@ pgadmin4
 plex
 plexamp
 postman
-pycharm-ce
+# pycharm-ce
 qlcolorcode
 qlmarkdown
 qlstephen
 qlvideo
 quicklook-json
-recordit
+# recordit
 rectangle
 scrivener
-signal
-skitch
+# signal
+# skitch
 # skype
 slack
 # sublime-text
@@ -68,7 +69,7 @@ telegram
 the-unarchiver
 thunderbird
 topaz-gigapixel-ai
-tower
+# tower
 # tweetbot
 visual-studio-code
 vlc
